@@ -41,7 +41,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 					description = cause.getShortDescription();
 				}
 				else {
-					description = "Triggered by a periodic timer";
+					description = Messages.timertriggercause_description();
 				}
 			} 
 			else if (cause instanceof UserIdCause) {
