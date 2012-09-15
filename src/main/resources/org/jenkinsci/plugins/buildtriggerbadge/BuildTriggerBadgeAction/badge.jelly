@@ -1,6 +1,6 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
 	<j:if test="${it.isTimerTriggerCause()}">
-	  <img src="${rootURL}${it.iconTimerTriggerCausePath}" width="16" height="16" alt="${it.description}"/>
+	  <img src="${rootURL}${it.iconTimerTriggerCausePath}" width="16" height="16" alt="${it.description}" title="${it.description}"/>
 	</j:if>
 	<j:if test="${it.isSCMTriggerCause()}">
 	  <img src="${rootURL}${it.iconSCMTriggerCausePath}" width="16" height="16" alt="${it.description}" title="${it.description}"/>
