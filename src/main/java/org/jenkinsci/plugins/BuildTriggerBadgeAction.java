@@ -11,7 +11,7 @@ import jenkins.model.Jenkins;
 
 /**
  * Badge action of the build trigger cause.
- * @author Micha�l Pailloncy
+ * @author Michaël Pailloncy
  */
 public class BuildTriggerBadgeAction implements BuildBadgeAction {
 

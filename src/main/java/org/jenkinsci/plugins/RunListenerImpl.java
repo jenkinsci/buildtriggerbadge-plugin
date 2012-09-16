@@ -7,7 +7,7 @@ import hudson.model.listeners.RunListener;
 
 /**
  * Listener to all build to add the badge action.
- * @author Micha�l Pailloncy
+ * @author Michaël Pailloncy
  */
 @Extension
 public class RunListenerImpl extends RunListener<AbstractBuild>{

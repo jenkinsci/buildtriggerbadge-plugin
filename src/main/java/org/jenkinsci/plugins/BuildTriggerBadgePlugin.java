@@ -4,7 +4,7 @@ import hudson.Plugin;
 
 /**
  * Plugin extension.
- * @author Michaël Pailloncy
+ * @author MichaÃ«l Pailloncy
  */
 public class BuildTriggerBadgePlugin extends Plugin {
 
