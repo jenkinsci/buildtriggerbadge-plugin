@@ -26,10 +26,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	 * Constructor. Initialize causes of the build.
 	 * @param build : {@link AbstractBuild}
 	 */
-	public BuildTriggerBadgeAction(AbstractBuild build) {
-		System.out.println("nb de causes: "+build.getCauses().size());
-		for (int index = 0; index < build.getCauses().size(); index++) {
-			Cause cause = (Cause) build.getCauses().get(index);
+	public BuildTriggerBadgeAction(Cause cause) {
 			if(cause instanceof SCMTriggerCause) {
 				isSCMTriggerCause = true;
 				if(cause.getShortDescription() != null) {
@@ -49,7 +46,6 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 				isUserCause = true;
 				description = cause.getShortDescription();
 			} 
-		}
 	}
 
 	public static String getIconTimerTriggerCausePath() {
