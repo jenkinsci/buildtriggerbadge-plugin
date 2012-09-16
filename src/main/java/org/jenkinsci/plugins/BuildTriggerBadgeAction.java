@@ -1,105 +1,79 @@
 package org.jenkinsci.plugins;
 
 import hudson.PluginWrapper;
-import hudson.model.BuildBadgeAction;
 import hudson.model.AbstractBuild;
+import hudson.model.BuildBadgeAction;
 import hudson.model.Cause;
+import hudson.model.Cause.UpstreamCause;
 import hudson.model.Cause.UserIdCause;
 import hudson.triggers.SCMTrigger.SCMTriggerCause;
 import hudson.triggers.TimerTrigger.TimerTriggerCause;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import jenkins.model.Jenkins;
 
 /**
  * Badge action of the build trigger cause.
+ * 
  * @author Michaël Pailloncy
  */
 public class BuildTriggerBadgeAction implements BuildBadgeAction {
 
-	private boolean isSCMTriggerCause;
-	private boolean isTimerTriggerCause;
-	private boolean isUserCause;
+    private final Cause cause;
 
-	/** Description displayed in the &lt;img/&gt; tooltip. */
-	private String description;
-	
-	/**
-	 * Constructor. Initialize causes of the build.
-	 * @param build : {@link AbstractBuild}
-	 */
-	public BuildTriggerBadgeAction(Cause cause) {
-			if(cause instanceof SCMTriggerCause) {
-				isSCMTriggerCause = true;
-				if(cause.getShortDescription() != null) {
-					description = cause.getShortDescription();
-				}
-			}
-			else if (cause instanceof TimerTriggerCause) {
-				isTimerTriggerCause = true;
-				if(cause.getShortDescription() != null) {
-					description = cause.getShortDescription();
-				}
-				else {
-					description = "Triggered by a periodic timer";
-				}
-			} 
-			else if (cause instanceof UserIdCause) {
-				isUserCause = true;
-				description = cause.getShortDescription();
-			} 
-	}
+    /**
+     * Constructor. Initialize causes of the build.
+     * 
+     * @param build
+     *            : {@link AbstractBuild}
+     */
+    public BuildTriggerBadgeAction(Cause cause) {
+	// TODO : don't store cause but compute icon & title up-front for
+	// "perf"?
+	this.cause = cause;
+    }
 
-	public static String getIconTimerTriggerCausePath() {
-		return getIconPath("timer-cause.png");
-	}
-	
-	public static String getIconSCMTriggerCausePath() {
-		return getIconPath("scm-cause.png");
-	}
-	
-	public static String getIconUserCausePath() {
-		return getIconPath("user-cause.png");
-	}
-	
-	private static String getIconPath(String iconName){
-		PluginWrapper wrapper = Jenkins.getInstance().getPluginManager().getPlugin(BuildTriggerBadgePlugin.class);
-		return "/plugin/" + wrapper.getShortName() + "/images/" + iconName;
-	}
+    public String getTooltip() {
+	return cause.getShortDescription();
+    }
 
-	public boolean isTimerTriggerCause() {
-		return isTimerTriggerCause;
+    public String getIcon() {
+	String path = iconPaths.get(cause.getClass());
+	if (path == null) {
+	    path = "fallback-cause.png";
 	}
+	return getIconPath(path);
+    }
 
-	public void setTimerTriggerCause(boolean isTimerTriggerCause) {
-		this.isTimerTriggerCause = isTimerTriggerCause;
-	}
+    private static String getIconPath(String iconName) {
+	PluginWrapper wrapper = Jenkins.getInstance().getPluginManager()
+		.getPlugin(BuildTriggerBadgePlugin.class);
+	return "/plugin/" + wrapper.getShortName() + "/images/" + iconName;
+    }
 
-	public boolean isSCMTriggerCause() {
-		return isSCMTriggerCause;
-	}
+    private static Map<Class<? extends Cause>, String> iconPaths = new HashMap<Class<? extends Cause>, String>();
+    static {
+	iconPaths.put(UserIdCause.class, "user-cause.png");
+	iconPaths.put(TimerTriggerCause.class, "timer-cause.png");
+	iconPaths.put(SCMTriggerCause.class, "scm-cause.png");
+	iconPaths.put(UpstreamCause.class, "upstream-cause.png");
+	// TODO catch-all ?
+    }
 
-	public void setSCMTriggerCause(boolean isSCMTriggerCause) {
-		this.isSCMTriggerCause = isSCMTriggerCause;
-	}
-	
-	public boolean isUserCause() {
-		return isUserCause;
-	}
+    // non use interface methods
+    public String getIconFileName() {
+	return null;
+    }
 
-	public void setUserCause(boolean isUserCause) {
-		this.isUserCause = isUserCause;
-	}
-	
-	public String getDescription() {
-		return description;
-	}
+    public String getDisplayName() {
+	System.out.println(cause);
+	System.out.println(getTooltip());
+	return "Trigger "+cause.getClass().getSimpleName()+" : "+getTooltip();
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	// non use interface methods
-	public String getIconFileName() { return null; }
-	public String getDisplayName() { return ""; }
-	public String getUrlName() { return ""; }
-
+    public String getUrlName() {
+	return "";
+    }
 }
