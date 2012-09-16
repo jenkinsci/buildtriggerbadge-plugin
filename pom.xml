@@ -21,6 +21,11 @@
 			<name>Michaël Pailloncy</name>
 			<email>mpapo.dev@gmail.com</email>
 		</developer>
+		<developer>
+			<id>batmat</id>
+			<name>Baptiste Mathus</name>
+			<email>batmat@batmat.net</email>
+		</developer>
 	</developers>
 
 	<repositories>
