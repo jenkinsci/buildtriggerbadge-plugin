@@ -20,7 +20,6 @@ public class RunListenerImpl extends RunListener<AbstractBuild>{
 	public void onStarted(AbstractBuild r, TaskListener listener) {
 		// add BuildTriggerBadgeAction on each builds.
 		r.addAction(new BuildTriggerBadgeAction(r));
-		System.out.println("Bim");
 		super.onStarted(r, listener);
 	}
 }
