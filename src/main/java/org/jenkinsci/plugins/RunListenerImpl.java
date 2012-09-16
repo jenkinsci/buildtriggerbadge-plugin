@@ -7,7 +7,7 @@ import hudson.model.listeners.RunListener;
 
 /**
  * Listener to all build to add the badge action.
- * @author Michaël Pailloncy
+ * @author Michaï¿½l Pailloncy
  */
 @Extension
 public class RunListenerImpl extends RunListener<AbstractBuild>{
@@ -20,6 +20,7 @@ public class RunListenerImpl extends RunListener<AbstractBuild>{
 	public void onStarted(AbstractBuild r, TaskListener listener) {
 		// add BuildTriggerBadgeAction on each builds.
 		r.addAction(new BuildTriggerBadgeAction(r));
+		System.out.println("Bim");
 		super.onStarted(r, listener);
 	}
 }

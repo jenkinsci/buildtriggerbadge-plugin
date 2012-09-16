@@ -11,7 +11,7 @@ import jenkins.model.Jenkins;
 
 /**
  * Badge action of the build trigger cause.
- * @author Michaël Pailloncy
+ * @author Michaï¿½l Pailloncy
  */
 public class BuildTriggerBadgeAction implements BuildBadgeAction {
 
@@ -27,6 +27,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	 * @param build : {@link AbstractBuild}
 	 */
 	public BuildTriggerBadgeAction(AbstractBuild build) {
+		System.out.println("nb de causes: "+build.getCauses().size());
 		for (int index = 0; index < build.getCauses().size(); index++) {
 			Cause cause = (Cause) build.getCauses().get(index);
 			if(cause instanceof SCMTriggerCause) {
