@@ -1,4 +1,4 @@
-package org.jenkinsci.plugins;
+package org.jenkinsci.plugins.buildtriggerbadge;
 
 import hudson.PluginWrapper;
 import hudson.model.AbstractBuild;
@@ -59,7 +59,6 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	iconPaths.put(TimerTriggerCause.class, "timer-cause.png");
 	iconPaths.put(SCMTriggerCause.class, "scm-cause.png");
 	iconPaths.put(UpstreamCause.class, "upstream-cause.png");
-	// TODO catch-all ?
     }
 
     // non use interface methods
@@ -68,8 +67,6 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
     }
 
     public String getDisplayName() {
-	System.out.println(cause);
-	System.out.println(getTooltip());
 	return "Trigger "+cause.getClass().getSimpleName()+" : "+getTooltip();
     }
 

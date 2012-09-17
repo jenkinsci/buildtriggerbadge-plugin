@@ -1,4 +1,4 @@
-package org.jenkinsci.plugins;
+package org.jenkinsci.plugins.buildtriggerbadge;
 
 import hudson.Extension;
 import hudson.model.AbstractBuild;
