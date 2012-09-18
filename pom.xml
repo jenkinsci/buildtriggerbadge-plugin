@@ -14,6 +14,8 @@
 
 	<name>Build Trigger Badge Plugin</name>
 	<description>Displays icon(s) representing the cause(s) of a build.</description>
+	<url>https://wiki.jenkins-ci.org/display/JENKINS/Build+Trigger+Badge+Plugin</url>
+
 	<developers>
 		<developer>
 			<id>mpapo</id>
@@ -26,9 +28,24 @@
 			<email>batmat@batmat.net</email>
 		</developer>
 	</developers>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
+	<scm>
+	    <connection>scm:git:git://github.com/jenkinsci/buildtriggerbadge-plugin.git</connection>
+	    <developerConnection>scm:git:git@github.com:jenkinsci/buildtriggerbadge-plugin.git</developerConnection>
+	    <url>https://github.com/jenkinsci/buildtriggerbadge-plugin</url>
+  	</scm>
+
+  	<distributionManagement>
+   		<repository>
+    		<id>maven.jenkins-ci.org</id>
+    		<url>http://maven.jenkins-ci.org:8081/content/repositories/releases/</url>
+   		</repository>
+  	</distributionManagement>
+
 	<repositories>
 		<repository>
 			<id>repo.jenkins-ci.org</id>
@@ -42,4 +59,5 @@
 			<url>http://repo.jenkins-ci.org/public/</url>
 		</pluginRepository>
 	</pluginRepositories>
+
 </project>
