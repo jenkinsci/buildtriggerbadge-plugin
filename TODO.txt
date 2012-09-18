@@ -1,0 +1,6 @@
+* Add an option to be able to de/activate that plugin
+** By job as an exception?
+* Think about supporting less standard causes?
+** In that case, the code'll need to be refactored so that we don't throw
+   an Exception if the class is not in the classpath.
+ 

@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.jenkins-ci.plugins</groupId>
@@ -9,25 +9,26 @@
 
 	<groupId>org.jenkins-ci.plugins</groupId>
 	<artifactId>buildtriggerbadge</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.5-SNAPSHOT</version>
 	<packaging>hpi</packaging>
-	
-	<name>Build Trigger Badge Plugin</name>
-	<description>Displays an icon representing the cause of a build.</description>
 
+	<name>Build Trigger Badge Plugin</name>
+	<description>Displays icon(s) representing the cause(s) of a build.</description>
 	<developers>
-		<developer>
-			<id>batmat</id>
-			<name>Baptiste Mathus</name>
-			<email>bmathus@batmat.net</email>
-		</developer>
 		<developer>
 			<id>mpapo</id>
 			<name>Michaël Pailloncy</name>
 			<email>mpapo.dev@gmail.com</email>
 		</developer>
+		<developer>
+			<id>batmat</id>
+			<name>Baptiste Mathus</name>
+			<email>batmat@batmat.net</email>
+		</developer>
 	</developers>
-
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<repositories>
 		<repository>
 			<id>repo.jenkins-ci.org</id>
@@ -41,5 +42,4 @@
 			<url>http://repo.jenkins-ci.org/public/</url>
 		</pluginRepository>
 	</pluginRepositories>
-	
 </project>
