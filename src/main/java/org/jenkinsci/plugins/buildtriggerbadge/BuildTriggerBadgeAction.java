@@ -1,9 +1,11 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
 import hudson.PluginWrapper;
+import hudson.cli.BuildCommand.CLICause;
 import hudson.model.AbstractBuild;
 import hudson.model.BuildBadgeAction;
 import hudson.model.Cause;
+import hudson.model.Cause.RemoteCause;
 import hudson.model.Cause.UpstreamCause;
 import hudson.model.Cause.UserIdCause;
 import hudson.triggers.SCMTrigger.SCMTriggerCause;
@@ -33,6 +35,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	// TODO : don't store cause but compute icon & title up-front for
 	// "perf"?
 	this.cause = cause;
+	System.out.println("CAUSE !!! => "+cause.getClass()+ " " + cause.getShortDescription());
     }
 
     public String getTooltip() {
@@ -59,6 +62,8 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	iconPaths.put(TimerTriggerCause.class, "timer-cause.png");
 	iconPaths.put(SCMTriggerCause.class, "scm-cause.png");
 	iconPaths.put(UpstreamCause.class, "upstream-cause.png");
+	iconPaths.put(CLICause.class, "cli-cause.png");
+	iconPaths.put(RemoteCause.class, "remote-cause.png");
     }
 
     // non use interface methods

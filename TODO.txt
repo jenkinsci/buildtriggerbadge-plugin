@@ -4,3 +4,10 @@
 ** In that case, the code'll need to be refactored so that we don't throw
    an Exception if the class is not in the classpath.
  
+* Sometimes, the wrapper variable (BuildTriggerBadgeAction:l56) can be null.
+  Seems like PluginWrapper wrapper = Jenkins.getInstance().getPluginManager()
+		.getPlugin(BuildTriggerBadgePlugin.class); 
+  can sometimes return null.
+  I wonder if this is something than can be only happen during dev using hpi:run and fast-changing classes,
+  of if this is something we should watch out...
+  At least, during dev, it sometimes ends up with having a lot of NPE in the logs.
