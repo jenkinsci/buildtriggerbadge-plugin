@@ -34,7 +34,7 @@
 
 	<scm>
 	    <connection>scm:git:git://github.com/jenkinsci/buildtriggerbadge-plugin.git</connection>
-	    <developerConnection>scm:git:git@github.com:jenkinsci/buildtriggerbadge-plugin.git</developerConnection>
+	    <developerConnection>scm:git:ssh://git@github.com/jenkinsci/buildtriggerbadge-plugin.git</developerConnection>
 	    <url>https://github.com/jenkinsci/buildtriggerbadge-plugin</url>
   	</scm>
 
