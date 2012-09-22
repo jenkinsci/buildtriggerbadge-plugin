@@ -53,7 +53,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	return "/plugin/" + wrapper.getShortName() + "/images/" + iconName;
     }
 
-    private static Map<Class<? extends Cause>, String> iconPaths = new HashMap<Class<? extends Cause>, String>();
+    protected static Map<Class<? extends Cause>, String> iconPaths = new HashMap<Class<? extends Cause>, String>();
     static {
 	iconPaths.put(UserIdCause.class, "user-cause.png");
 	iconPaths.put(TimerTriggerCause.class, "timer-cause.png");
