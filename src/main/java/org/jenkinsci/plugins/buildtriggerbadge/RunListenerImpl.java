@@ -11,20 +11,20 @@ import java.util.List;
 /**
  * Listener to all build to add the badge action.
  * 
- * @author Michaël Pailloncy
+ * @author Michael Pailloncy
  */
 @Extension
 public class RunListenerImpl extends RunListener<AbstractBuild> {
-    public RunListenerImpl() {
-	super(AbstractBuild.class);
-    }
-
-    @Override
-    public void onStarted(AbstractBuild build, TaskListener listener) {
-	List<Cause> causes = build.getCauses();
-	for (Cause cause : causes) {
-	    build.addAction(new BuildTriggerBadgeAction(cause));
+	public RunListenerImpl() {
+		super(AbstractBuild.class);
 	}
-	super.onStarted(build, listener);
-    }
+
+	@Override
+	public void onStarted(AbstractBuild build, TaskListener listener) {
+		List<Cause> causes = build.getCauses();
+		for (Cause cause : causes) {
+			build.addAction(new BuildTriggerBadgeAction(cause));
+		}
+		super.onStarted(build, listener);
+	}
 }

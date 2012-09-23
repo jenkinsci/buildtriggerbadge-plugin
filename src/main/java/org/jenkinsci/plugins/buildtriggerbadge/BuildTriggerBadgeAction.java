@@ -19,62 +19,63 @@ import jenkins.model.Jenkins;
 /**
  * Badge action of the build trigger cause.
  * 
- * @author Michaël Pailloncy
+ * @author Michael Pailloncy
  */
 public class BuildTriggerBadgeAction implements BuildBadgeAction {
 
-    private final Cause cause;
+	private final Cause cause;
 
-    /**
-     * Constructor. Initialize causes of the build.
-     * 
-     * @param build
-     *            : {@link AbstractBuild}
-     */
-    public BuildTriggerBadgeAction(Cause cause) {
-	// TODO : don't store cause but compute icon & title up-front for
-	// "perf"?
-	this.cause = cause;
-    }
-
-    public String getTooltip() {
-	return cause.getShortDescription();
-    }
-
-    public String getIcon() {
-	String path = iconPaths.get(cause.getClass());
-	if (path == null) {
-	    path = "fallback-cause.png";
+	/**
+	 * Constructor. Initialize causes of the build.
+	 * 
+	 * @param build
+	 *            : {@link AbstractBuild}
+	 */
+	public BuildTriggerBadgeAction(Cause cause) {
+		// TODO : don't store cause but compute icon & title up-front for
+		// "perf"?
+		this.cause = cause;
 	}
-	return getIconPath(path);
-    }
 
-    private static String getIconPath(String iconName) {
-	PluginWrapper wrapper = Jenkins.getInstance().getPluginManager()
-		.getPlugin(BuildTriggerBadgePlugin.class);
-	return "/plugin/" + wrapper.getShortName() + "/images/" + iconName;
-    }
+	public String getTooltip() {
+		return cause.getShortDescription();
+	}
 
-    protected static Map<Class<? extends Cause>, String> iconPaths = new HashMap<Class<? extends Cause>, String>();
-    static {
-	iconPaths.put(UserIdCause.class, "user-cause.png");
-	iconPaths.put(TimerTriggerCause.class, "timer-cause.png");
-	iconPaths.put(SCMTriggerCause.class, "scm-cause.png");
-	iconPaths.put(UpstreamCause.class, "upstream-cause.png");
-	iconPaths.put(CLICause.class, "cli-cause.png");
-	iconPaths.put(RemoteCause.class, "remote-cause.png");
-    }
+	public String getIcon() {
+		String path = iconPaths.get(cause.getClass());
+		if (path == null) {
+			path = "fallback-cause.png";
+		}
+		return getIconPath(path);
+	}
 
-    // non use interface methods
-    public String getIconFileName() {
-	return null;
-    }
+	private static String getIconPath(String iconName) {
+		PluginWrapper wrapper = Jenkins.getInstance().getPluginManager()
+				.getPlugin(BuildTriggerBadgePlugin.class);
+		return "/plugin/" + wrapper.getShortName() + "/images/" + iconName;
+	}
 
-    public String getDisplayName() {
-	return "Trigger "+cause.getClass().getSimpleName()+" : "+getTooltip();
-    }
+	protected static Map<Class<? extends Cause>, String> iconPaths = new HashMap<Class<? extends Cause>, String>();
+	static {
+		iconPaths.put(UserIdCause.class, "user-cause.png");
+		iconPaths.put(TimerTriggerCause.class, "timer-cause.png");
+		iconPaths.put(SCMTriggerCause.class, "scm-cause.png");
+		iconPaths.put(UpstreamCause.class, "upstream-cause.png");
+		iconPaths.put(CLICause.class, "cli-cause.png");
+		iconPaths.put(RemoteCause.class, "remote-cause.png");
+	}
 
-    public String getUrlName() {
-	return "";
-    }
+	// non use interface methods
+	public String getIconFileName() {
+		return null;
+	}
+
+	public String getDisplayName() {
+		return "Trigger " + cause.getClass().getSimpleName() + " : "
+				+ getTooltip();
+	}
+
+	public String getUrlName() {
+		return "";
+	}
 }
