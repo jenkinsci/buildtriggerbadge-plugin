@@ -35,7 +35,6 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	// TODO : don't store cause but compute icon & title up-front for
 	// "perf"?
 	this.cause = cause;
-	System.out.println("CAUSE !!! => "+cause.getClass()+ " " + cause.getShortDescription());
     }
 
     public String getTooltip() {
