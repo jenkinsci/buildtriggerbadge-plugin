@@ -11,3 +11,6 @@
   I wonder if this is something than can be only happen during dev using hpi:run and fast-changing classes,
   of if this is something we should watch out...
   At least, during dev, it sometimes ends up with having a lot of NPE in the logs.
+
+* Add a limit to the number of displayed icons. Sometimes, the plugin could display more than 5 icons which can produce confusion in the use of the plugin and Jenkins.
+This situation may occur when the build queue is important in Jenkins.
