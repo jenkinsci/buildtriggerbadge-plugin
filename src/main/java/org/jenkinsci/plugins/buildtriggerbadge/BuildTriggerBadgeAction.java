@@ -65,6 +65,10 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 		iconPaths.put(RemoteCause.class, "remote-cause.png");
 	}
 
+	public static BuildTriggerBadgePlugin getPlugin() {
+		return (BuildTriggerBadgePlugin) Jenkins.getInstance().getPlugin(BuildTriggerBadgePlugin.class);
+	}
+	
 	// non use interface methods
 	public String getIconFileName() {
 		return null;
