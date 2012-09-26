@@ -7,6 +7,7 @@ import hudson.model.BuildBadgeAction;
 import hudson.model.Cause;
 import hudson.model.Cause.RemoteCause;
 import hudson.model.Cause.UpstreamCause;
+import hudson.model.Cause.UserCause;
 import hudson.model.Cause.UserIdCause;
 import hudson.triggers.SCMTrigger.SCMTriggerCause;
 import hudson.triggers.TimerTrigger.TimerTriggerCause;
@@ -58,6 +59,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	protected static Map<Class<? extends Cause>, String> iconPaths = new HashMap<Class<? extends Cause>, String>();
 	static {
 		iconPaths.put(UserIdCause.class, "user-cause.png");
+		iconPaths.put(UserCause.class, "user-cause.png");
 		iconPaths.put(TimerTriggerCause.class, "timer-cause.png");
 		iconPaths.put(SCMTriggerCause.class, "scm-cause.png");
 		iconPaths.put(UpstreamCause.class, "upstream-cause.png");
