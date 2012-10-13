@@ -2,8 +2,8 @@ package org.jenkinsci.plugins.buildtriggerbadge;
 
 import hudson.PluginWrapper;
 import hudson.cli.BuildCommand.CLICause;
-import hudson.model.AbstractBuild;
 import hudson.model.BuildBadgeAction;
+import hudson.model.AbstractBuild;
 import hudson.model.Cause;
 import hudson.model.Cause.RemoteCause;
 import hudson.model.Cause.UpstreamCause;

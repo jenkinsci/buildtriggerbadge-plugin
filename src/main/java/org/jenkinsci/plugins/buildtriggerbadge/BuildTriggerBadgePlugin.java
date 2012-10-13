@@ -1,12 +1,11 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
+import hudson.Plugin;
+import hudson.model.Descriptor.FormException;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-
-import hudson.Plugin;
-import hudson.model.Describable;
-import hudson.model.Descriptor.FormException;
 
 import net.sf.json.JSONObject;
 
