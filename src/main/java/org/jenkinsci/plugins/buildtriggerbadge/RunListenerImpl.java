@@ -31,17 +31,22 @@ public class RunListenerImpl extends RunListener<AbstractBuild> {
 	public void onStarted(AbstractBuild build, TaskListener listener) {
 		BuildTriggerBadgePlugin plugin = Jenkins.getInstance().getPlugin(BuildTriggerBadgePlugin.class);
 		if(plugin.isActivated()) {
-			Set<Class<? extends Cause>> causeClasses =  new HashSet<Class<? extends Cause>>();
+			Set<String> causeClasses =  new HashSet<String>();
 			List<Cause> causes = build.getCauses();
 			for (Cause cause : causes) {
-				// filter causes by its Class type
-				if(!causeClasses.contains(cause.getClass())) {
-					causeClasses.add(cause.getClass());
+				// filter causes by Class type and description
+				String filter = getCauseFilter(cause);
+				if(!causeClasses.contains(filter)) {
+					causeClasses.add(filter);
 					build.addAction(new BuildTriggerBadgeAction(cause));
 				}
 			}
 		}
 		super.onStarted(build, listener);
+	}
+	
+	private static String getCauseFilter(Cause cause) {
+		return cause.getClass().getCanonicalName()+ "_" + cause.getShortDescription();
 	}
 	
 }
