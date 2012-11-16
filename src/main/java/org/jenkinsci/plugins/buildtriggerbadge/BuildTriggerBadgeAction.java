@@ -43,7 +43,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	}
 
 	public String getIcon() {
-		String path = iconPaths.get(cause.getClass());
+		String path = iconPaths.get(cause.getClass().getName());
 		if (path == null) {
 			path = "fallback-cause.png";
 		}
@@ -56,15 +56,16 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 		return "/plugin/" + wrapper.getShortName() + "/images/" + iconName;
 	}
 
-	protected static Map<Class<? extends Cause>, String> iconPaths = new HashMap<Class<? extends Cause>, String>();
+    protected static Map<String,String> iconPaths = new HashMap<String,String>();
 	static {
-		iconPaths.put(UserIdCause.class, "user-cause.png");
-		iconPaths.put(UserCause.class, "user-cause.png");
-		iconPaths.put(TimerTriggerCause.class, "timer-cause.png");
-		iconPaths.put(SCMTriggerCause.class, "scm-cause.png");
-		iconPaths.put(UpstreamCause.class, "upstream-cause.png");
-		iconPaths.put(CLICause.class, "cli-cause.png");
-		iconPaths.put(RemoteCause.class, "remote-cause.png");
+		iconPaths.put(UserIdCause.class.getName(), "user-cause.png");
+		iconPaths.put(UserCause.class.getName(), "user-cause.png");
+		iconPaths.put(TimerTriggerCause.class.getName(), "timer-cause.png");
+		iconPaths.put(SCMTriggerCause.class.getName(), "scm-cause.png");
+		iconPaths.put(UpstreamCause.class.getName(), "upstream-cause.png");
+		iconPaths.put(CLICause.class.getName(), "cli-cause.png");
+		iconPaths.put(RemoteCause.class.getName(), "remote-cause.png");
+        iconPaths.put("org.jvnet.hudson.plugins.m2release.ReleaseCause", "user-cause.png");
 	}
 
 	public static BuildTriggerBadgePlugin getPlugin() {
