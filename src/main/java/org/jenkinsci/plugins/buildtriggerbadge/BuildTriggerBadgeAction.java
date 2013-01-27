@@ -75,6 +75,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 		iconPaths.put(CLICause.class.getName(), "cli-cause.png");
 		iconPaths.put(RemoteCause.class.getName(), "remote-cause.png");
 		iconPaths.put("org.jvnet.hudson.plugins.m2release.ReleaseCause", "user-cause.png");
+		iconPaths.put("com.cloudbees.jenkins.GitHubPushCause", "github-push-cause.png");
 	}
 
 	public static BuildTriggerBadgePlugin getPlugin() {
