@@ -12,6 +12,8 @@ import hudson.model.Cause.UserIdCause;
 import hudson.triggers.SCMTrigger.SCMTriggerCause;
 import hudson.triggers.TimerTrigger.TimerTriggerCause;
 
+import java.lang.Class;
+import java.lang.String;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +45,14 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	}
 
 	public String getIcon() {
-		String path = iconPaths.get(cause.getClass().getName());
+		Class clazz = cause.getClass();
+		String path = null;
+		while (clazz != null && path == null) {
+			path = iconPaths.get(clazz.getName());
+			if (path == null) {
+				clazz = clazz.getSuperclass();
+			}
+		}
 		if (path == null) {
 			path = "fallback-cause.png";
 		}
@@ -56,7 +65,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 		return "/plugin/" + wrapper.getShortName() + "/images/" + iconName;
 	}
 
-    protected static Map<String,String> iconPaths = new HashMap<String,String>();
+	protected static Map<String,String> iconPaths = new HashMap<String,String>();
 	static {
 		iconPaths.put(UserIdCause.class.getName(), "user-cause.png");
 		iconPaths.put(UserCause.class.getName(), "user-cause.png");
@@ -65,7 +74,8 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 		iconPaths.put(UpstreamCause.class.getName(), "upstream-cause.png");
 		iconPaths.put(CLICause.class.getName(), "cli-cause.png");
 		iconPaths.put(RemoteCause.class.getName(), "remote-cause.png");
-        iconPaths.put("org.jvnet.hudson.plugins.m2release.ReleaseCause", "user-cause.png");
+		iconPaths.put("org.jvnet.hudson.plugins.m2release.ReleaseCause", "user-cause.png");
+		iconPaths.put("com.cloudbees.jenkins.GitHubPushCause", "github-push-cause.png");
 	}
 
 	public static BuildTriggerBadgePlugin getPlugin() {
