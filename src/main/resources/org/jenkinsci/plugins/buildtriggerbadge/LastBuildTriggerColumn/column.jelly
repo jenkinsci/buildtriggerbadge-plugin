@@ -1,0 +1,15 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+	<td>
+		<j:set var="icons" value="${it.getCauseIcons(job)}" />
+		<j:choose>
+			<j:when test="${icons != null}">
+				<j:forEach var="iconUrl" items="${icons}">
+					<img width="16" height="16" src="${rootURL}${iconUrl}"/>
+				</j:forEach>
+			</j:when>
+			<j:otherwise>
+				<span>${%LastBuildTriggerColumn.NoCause}</span>
+			</j:otherwise>
+		</j:choose>
+	</td>
+</j:jelly>
