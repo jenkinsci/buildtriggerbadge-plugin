@@ -1,10 +1,13 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
 	<td>
-		<j:set var="icons" value="${it.getCauseIcons(job)}" />
+		<j:set var="entries" value="${it.getLastBuildCauses(job)}" />
 		<j:choose>
-			<j:when test="${icons != null}">
-				<j:forEach var="iconUrl" items="${icons}">
-					<img width="16" height="16" src="${rootURL}${iconUrl}"/>
+			<j:when test="${entries != null}">
+				<j:forEach var="causeEntry" items="${entries}">
+					<j:set var="causeIconUrl" value="${causeEntry.key}" />
+					<j:set var="causeShortDesc" value="${causeEntry.value}" />
+					<img width="16" height="16" src="${rootURL}${causeIconUrl}"/>
+					<span>&#160;${causeShortDesc}</span>
 				</j:forEach>
 			</j:when>
 			<j:otherwise>

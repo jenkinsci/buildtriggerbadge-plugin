@@ -1,7 +1,8 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.sf.json.JSONObject;
 
@@ -49,18 +50,20 @@ public class LastBuildTriggerColumn extends ListViewColumn {
         return DESCRIPTOR;
     }
     
-    @SuppressWarnings("unchecked")
-    public List<String> getCauseIcons(Job job) {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public Map<String, String> getLastBuildCauses(Job job) {
     	Run r = job.getLastBuild();
     	if (r != null) {
     		List<Cause> lastCauses = r.getCauses();
-    		List<String> causeIcons = new ArrayList<String>();
-    		for (Cause cause : lastCauses) {
-    			causeIcons.add(new BuildTriggerBadgeAction(cause).getIcon());
-			}
-    		return causeIcons;
-    	} else {
-    		return null;
+    		if (lastCauses != null) {
+    			Map<String,String> causeEntries = new HashMap<String,String>();
+    			for (Cause cause : lastCauses) {
+    				causeEntries.put(new BuildTriggerBadgeAction(cause).getIcon(), 
+    						cause.getShortDescription());
+    			}
+    			return causeEntries;
+    		}
     	}
+    	return null;
     }
 }
