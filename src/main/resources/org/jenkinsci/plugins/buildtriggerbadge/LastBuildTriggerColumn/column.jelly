@@ -3,11 +3,14 @@
 		<j:set var="entries" value="${it.getLastBuildCauses(job)}" />
 		<j:choose>
 			<j:when test="${entries != null}">
-				<j:forEach var="causeEntry" items="${entries}">
+				<j:forEach var="causeEntry" varStatus="status" items="${entries}">
 					<j:set var="causeIconUrl" value="${causeEntry.key}" />
 					<j:set var="causeShortDesc" value="${causeEntry.value}" />
 					<img width="16" height="16" src="${rootURL}${causeIconUrl}"/>
 					<span>&#160;${causeShortDesc}</span>
+					<j:if test="${!status.last}">
+						<br/>
+					</j:if>
 				</j:forEach>
 			</j:when>
 			<j:otherwise>
