@@ -54,7 +54,7 @@ public class LastBuildTriggerColumn extends ListViewColumn {
     public Map<String, String> getLastBuildCauses(Job job) {
     	Run r = job.getLastBuild();
     	if (r != null) {
-    		List<Cause> lastCauses = r.getCauses();
+    		List<Cause> lastCauses = CauseFilter.filter((List<Cause>) r.getCauses());
     		if (lastCauses != null) {
     			Map<String,String> causeEntries = new HashMap<String,String>();
     			for (Cause cause : lastCauses) {
