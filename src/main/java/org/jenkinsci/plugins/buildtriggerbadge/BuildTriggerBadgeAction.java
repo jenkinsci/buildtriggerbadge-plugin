@@ -77,6 +77,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 		iconPaths.put("org.jvnet.hudson.plugins.m2release.ReleaseCause", "user-cause.png");
 		iconPaths.put("com.cloudbees.jenkins.GitHubPushCause", "github-push-cause.png");
 		iconPaths.put("org.jenkinsci.plugins.periodicreincarnation.PeriodicReincarnationBuildCause", "periodic-reincarnation.png");
+		iconPaths.put("com.chikli.hudson.plugin.naginator.NaginatorCause", "periodic-reincarnation.png");
 	}
 
 	public static BuildTriggerBadgePlugin getPlugin() {
