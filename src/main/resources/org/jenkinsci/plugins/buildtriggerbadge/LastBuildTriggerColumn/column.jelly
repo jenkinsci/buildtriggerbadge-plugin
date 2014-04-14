@@ -6,8 +6,7 @@
 				<j:forEach var="causeEntry" varStatus="status" items="${entries}">
 					<j:set var="causeIconUrl" value="${causeEntry.key}" />
 					<j:set var="causeShortDesc" value="${causeEntry.value}" />
-					<img width="16" height="16" src="${rootURL}${causeIconUrl}"/>
-					<span>&#160;${causeShortDesc}</span>
+					<img width="16" height="16" src="${rootURL}${causeIconUrl}" title="${causeEntry.value}" />
 					<j:if test="${!status.last}">
 						<br/>
 					</j:if>
