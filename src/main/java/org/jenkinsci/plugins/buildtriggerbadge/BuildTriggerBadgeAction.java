@@ -80,6 +80,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 		iconPaths.put("com.chikli.hudson.plugin.naginator.NaginatorCause", "periodic-reincarnation.png");
 		iconPaths.put("com.cloudbees.plugins.flow.FlowCause", "flow-cause.png");
 		iconPaths.put("com.cloudbees.jenkins.plugins.BitBucketPushCause", "bitbucket.png");
+		iconPaths.put("hudson.plugins.git.GitStatus$CommitHookCause", "git-hook-cause.png");
 	}
 
 	public static BuildTriggerBadgePlugin getPlugin() {
