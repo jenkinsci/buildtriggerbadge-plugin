@@ -18,6 +18,5 @@ public class BuildTriggerBadgeActionTest {
 		BuildTriggerBadgeAction action = new BuildTriggerBadgeAction(cause);
 		assertThat(action.getTooltip()).containsIgnoringCase("upstream");
 		assertThat(action.getDisplayName()).contains("upstream");
-
 	}
 }
