@@ -14,6 +14,7 @@ import org.kohsuke.stapler.StaplerRequest;
 
 /**
  * Plugin extension.
+ * 
  * @author Michael Pailloncy
  */
 public class BuildTriggerBadgePlugin extends Plugin {
@@ -22,18 +23,17 @@ public class BuildTriggerBadgePlugin extends Plugin {
 	private boolean activated = true;
 
 	public BuildTriggerBadgePlugin() {
-		
+
 	}
-	
+
 	@DataBoundConstructor
-    public BuildTriggerBadgePlugin(boolean activated) {
-        this.activated = activated;
-    }
+	public BuildTriggerBadgePlugin(boolean activated) {
+		this.activated = activated;
+	}
 
 	@Override
-	public void configure(StaplerRequest req, JSONObject formData)
-			throws IOException, ServletException, FormException {
-		
+	public void configure(StaplerRequest req, JSONObject formData) throws IOException, ServletException, FormException {
+
 		super.configure(req, formData);
 		// get activated value from system configuration save.
 		this.setActivated(formData.getBoolean(FIELD_ACTIVATED));
@@ -41,13 +41,13 @@ public class BuildTriggerBadgePlugin extends Plugin {
 		this.save();
 	}
 
-	public boolean isActivated() {	
+	public boolean isActivated() {
 		return activated;
 	}
 
 	public void setActivated(boolean activated) {
 		this.activated = activated;
 	}
-	
+
 	public static final String FIELD_ACTIVATED = "buildtriggerbadge_activated";
 }

@@ -24,46 +24,44 @@ import hudson.views.ListViewColumn;
  * 
  */
 public class LastBuildTriggerColumn extends ListViewColumn {
-    private static final class BuildNodeColumnDescriptor extends ListViewColumnDescriptor {
-        @Override
-        public String getDisplayName() {
-         return Messages.LastBuildTriggerColumn_DisplayName();
-        }
+	private static final class BuildNodeColumnDescriptor extends ListViewColumnDescriptor {
+		@Override
+		public String getDisplayName() {
+			return Messages.LastBuildTriggerColumn_DisplayName();
+		}
 
-        @Override
-        public ListViewColumn newInstance(final StaplerRequest request, final JSONObject formData) 
-        		throws FormException {
-            return new LastBuildTriggerColumn();
-        }
+		@Override
+		public ListViewColumn newInstance(final StaplerRequest request, final JSONObject formData) throws FormException {
+			return new LastBuildTriggerColumn();
+		}
 
-        @Override
-        public boolean shownByDefault() {
-            return false;
-        }
-    }
-    
-    @Extension
-    public static final Descriptor<ListViewColumn> DESCRIPTOR = new BuildNodeColumnDescriptor();
+		@Override
+		public boolean shownByDefault() {
+			return false;
+		}
+	}
 
-    @Override
-    public Descriptor<ListViewColumn> getDescriptor() {
-        return DESCRIPTOR;
-    }
-    
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    public Map<String, String> getLastBuildCauses(Job job) {
-    	Run r = job.getLastBuild();
-    	if (r != null) {
-    		List<Cause> lastCauses = CauseFilter.filter((List<Cause>) r.getCauses());
-    		if (lastCauses != null) {
-    			Map<String,String> causeEntries = new HashMap<String,String>();
-    			for (Cause cause : lastCauses) {
-    				causeEntries.put(new BuildTriggerBadgeAction(cause).getIcon(), 
-    						cause.getShortDescription());
-    			}
-    			return causeEntries;
-    		}
-    	}
-    	return null;
-    }
+	@Extension
+	public static final Descriptor<ListViewColumn> DESCRIPTOR = new BuildNodeColumnDescriptor();
+
+	@Override
+	public Descriptor<ListViewColumn> getDescriptor() {
+		return DESCRIPTOR;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Map<String, String> getLastBuildCauses(Job job) {
+		Run r = job.getLastBuild();
+		if (r != null) {
+			List<Cause> lastCauses = CauseFilter.filter((List<Cause>) r.getCauses());
+			if (lastCauses != null) {
+				Map<String, String> causeEntries = new HashMap<String, String>();
+				for (Cause cause : lastCauses) {
+					causeEntries.put(new BuildTriggerBadgeAction(cause).getIcon(), cause.getShortDescription());
+				}
+				return causeEntries;
+			}
+		}
+		return null;
+	}
 }

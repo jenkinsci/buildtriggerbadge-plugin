@@ -12,8 +12,6 @@ import hudson.model.Cause.UserIdCause;
 import hudson.triggers.SCMTrigger.SCMTriggerCause;
 import hudson.triggers.TimerTrigger.TimerTriggerCause;
 
-import java.lang.Class;
-import java.lang.String;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,12 +58,11 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	}
 
 	private static String getIconPath(String iconName) {
-		PluginWrapper wrapper = Jenkins.getInstance().getPluginManager()
-				.getPlugin(BuildTriggerBadgePlugin.class);
+		PluginWrapper wrapper = Jenkins.getInstance().getPluginManager().getPlugin(BuildTriggerBadgePlugin.class);
 		return "/plugin/" + wrapper.getShortName() + "/images/" + iconName;
 	}
 
-	protected static Map<String,String> iconPaths = new HashMap<String,String>();
+	protected static Map<String, String> iconPaths = new HashMap<String, String>();
 	static {
 		iconPaths.put(UserIdCause.class.getName(), "user-cause.png");
 		iconPaths.put(UserCause.class.getName(), "user-cause.png");
@@ -87,15 +84,14 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	public static BuildTriggerBadgePlugin getPlugin() {
 		return (BuildTriggerBadgePlugin) Jenkins.getInstance().getPlugin(BuildTriggerBadgePlugin.class);
 	}
-	
+
 	// non use interface methods
 	public String getIconFileName() {
 		return null;
 	}
 
 	public String getDisplayName() {
-		return "Trigger " + cause.getClass().getSimpleName() + " : "
-				+ getTooltip();
+		return "Trigger " + cause.getClass().getSimpleName() + " : " + getTooltip();
 	}
 
 	public String getUrlName() {

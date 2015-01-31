@@ -19,17 +19,17 @@ import jenkins.model.Jenkins;
  */
 @Extension
 public class RunListenerImpl extends RunListener<AbstractBuild> {
-	
+
 	public RunListenerImpl() {
 		super(AbstractBuild.class);
 	}
-	
+
 	@Override
 	public void onStarted(AbstractBuild build, TaskListener listener) {
 		BuildTriggerBadgePlugin plugin = Jenkins.getInstance().getPlugin(BuildTriggerBadgePlugin.class);
-		if(plugin.isActivated()) {
-			Set<String> causeClasses =  new HashSet<String>();
-			List<Cause> causes = CauseFilter.filter((List<Cause>)build.getCauses());
+		if (plugin.isActivated()) {
+			Set<String> causeClasses = new HashSet<String>();
+			List<Cause> causes = CauseFilter.filter((List<Cause>) build.getCauses());
 			if (causes != null) {
 				for (Cause cause : causes) {
 					build.addAction(new BuildTriggerBadgeAction(cause));
@@ -38,5 +38,5 @@ public class RunListenerImpl extends RunListener<AbstractBuild> {
 		}
 		super.onStarted(build, listener);
 	}
-	
+
 }

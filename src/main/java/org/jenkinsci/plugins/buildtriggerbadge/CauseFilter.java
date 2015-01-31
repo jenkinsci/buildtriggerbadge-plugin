@@ -26,22 +26,22 @@ public class CauseFilter {
 	public static List<Cause> filter(List<Cause> inputCauses) {
 		if (inputCauses == null)
 			return null;
-		
+
 		List<Cause> outCauses = new ArrayList<Cause>();
-		Set<String> causeClasses =  new HashSet<String>();
+		Set<String> causeClasses = new HashSet<String>();
 		for (Cause cause : inputCauses) {
 			// filter causes by Class type and description
 			String filter = getCauseFilter(cause);
-			if(!causeClasses.contains(filter)) {
+			if (!causeClasses.contains(filter)) {
 				causeClasses.add(filter);
 				outCauses.add(cause);
 			}
 		}
-		
+
 		return outCauses;
 	}
-	
+
 	private static String getCauseFilter(Cause cause) {
-		return cause.getClass().getCanonicalName()+ "_" + cause.getShortDescription();
+		return cause.getClass().getCanonicalName() + "_" + cause.getShortDescription();
 	}
 }

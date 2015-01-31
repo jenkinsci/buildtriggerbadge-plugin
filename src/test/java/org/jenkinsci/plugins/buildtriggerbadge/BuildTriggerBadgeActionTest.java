@@ -9,15 +9,15 @@ import hudson.model.Cause.UpstreamCause;
 import org.junit.Test;
 
 public class BuildTriggerBadgeActionTest {
-    @Test
-    public void stupidlyMockedUpstreamCause() {
-	Cause cause = mock(UpstreamCause.class);
-	when(cause.getShortDescription())
-		.thenReturn("upstream cause, blablabla");
+	@Test
+	public void stupidlyMockedUpstreamCause() {
+		Cause cause = mock(UpstreamCause.class);
+		when(cause.getShortDescription())
+				.thenReturn("upstream cause, blablabla");
 
-	BuildTriggerBadgeAction action = new BuildTriggerBadgeAction(cause);
-	assertThat(action.getTooltip()).containsIgnoringCase("upstream");
-	assertThat(action.getDisplayName()).contains("upstream");
+		BuildTriggerBadgeAction action = new BuildTriggerBadgeAction(cause);
+		assertThat(action.getTooltip()).containsIgnoringCase("upstream");
+		assertThat(action.getDisplayName()).contains("upstream");
 
-    }
+	}
 }

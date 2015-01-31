@@ -13,12 +13,13 @@ import org.jvnet.hudson.test.HudsonTestCase;
 
 /**
  * Tests for {@link RunListenerImpl}
+ * 
  * @author Michael Pailloncy
  */
 public class RunListenerImplTest extends HudsonTestCase {
-	 
+
 	@Bug(15474)
-	public void testSameIconMultipleTimesCorrection() throws IOException, InterruptedException, ExecutionException{
+	public void testSameIconMultipleTimesCorrection() throws IOException, InterruptedException, ExecutionException {
 		FreeStyleProject p = createFreeStyleProject();
 		Future<FreeStyleBuild> futureBuild = p.scheduleBuild2(20, new SCMTriggerCause("scm change 1"));
 		assertFalse(p.scheduleBuild(new SCMTriggerCause("scm change 2")));
