@@ -15,6 +15,8 @@ import java.util.Map;
 
 import jenkins.model.Jenkins;
 
+import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeProvider;
+
 /**
  * Class responsible for finding the icon assocated with a build cause.
  * 
@@ -31,7 +33,13 @@ public class IconFinder {
 	public String find() {
 
 		// amongst providers todo
-		System.err.println("TODO providers");
+		for (BuildTriggerBadgeProvider provider : BuildTriggerBadgeProvider.all()) {
+			String providedIcon = provider.provideIcon(cause);
+			if (providedIcon != null) {
+				// TODO log !
+				return providedIcon;
+			}
+		}
 
 		// internal
 		Class<?> clazz = cause.getClass();

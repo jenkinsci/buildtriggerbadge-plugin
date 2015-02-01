@@ -42,6 +42,11 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 		return "";
 	}
 
+	/**
+	 * Returns the icon to be used as a badge for the given cause that triggered the associated build.
+	 * 
+	 * @return the associated icon for the given cause.
+	 */
 	public String getIcon() {
 		return new IconFinder(cause).find();
 	}
