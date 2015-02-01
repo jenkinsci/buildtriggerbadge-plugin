@@ -30,10 +30,8 @@ public class RunListenerImpl extends RunListener<AbstractBuild> {
 		if (plugin.isActivated()) {
 			Set<String> causeClasses = new HashSet<String>();
 			List<Cause> causes = CauseFilter.filter((List<Cause>) build.getCauses());
-			if (causes != null) {
-				for (Cause cause : causes) {
-					build.addAction(new BuildTriggerBadgeAction(cause));
-				}
+			for (Cause cause : causes) {
+				build.addAction(new BuildTriggerBadgeAction(cause));
 			}
 		}
 		super.onStarted(build, listener);
