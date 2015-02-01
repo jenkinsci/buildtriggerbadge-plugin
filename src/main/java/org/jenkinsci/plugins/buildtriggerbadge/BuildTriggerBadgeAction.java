@@ -1,20 +1,7 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
-import hudson.PluginWrapper;
-import hudson.cli.BuildCommand.CLICause;
 import hudson.model.BuildBadgeAction;
-import hudson.model.AbstractBuild;
 import hudson.model.Cause;
-import hudson.model.Cause.RemoteCause;
-import hudson.model.Cause.UpstreamCause;
-import hudson.model.Cause.UserCause;
-import hudson.model.Cause.UserIdCause;
-import hudson.triggers.SCMTrigger.SCMTriggerCause;
-import hudson.triggers.TimerTrigger.TimerTriggerCause;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import jenkins.model.Jenkins;
 
 /**
@@ -27,14 +14,9 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	private final Cause cause;
 
 	/**
-	 * Constructor. Initialize causes of the build.
-	 * 
-	 * @param build
-	 *            : {@link AbstractBuild}
+	 * Initialize causes of the build.
 	 */
 	public BuildTriggerBadgeAction(Cause cause) {
-		// TODO : don't store cause but compute icon & title up-front for
-		// "perf"?
 		this.cause = cause;
 	}
 
@@ -42,45 +24,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 		return cause.getShortDescription();
 	}
 
-	public String getIcon() {
-		Class clazz = cause.getClass();
-		String path = null;
-		while (clazz != null && path == null) {
-			path = iconPaths.get(clazz.getName());
-			if (path == null) {
-				clazz = clazz.getSuperclass();
-			}
-		}
-		if (path == null) {
-			path = "fallback-cause.png";
-		}
-		return getIconPath(path);
-	}
-
-	private static String getIconPath(String iconName) {
-		PluginWrapper wrapper = Jenkins.getInstance().getPluginManager().getPlugin(BuildTriggerBadgePlugin.class);
-		return "/plugin/" + wrapper.getShortName() + "/images/" + iconName;
-	}
-
-	protected static Map<String, String> iconPaths = new HashMap<String, String>();
-	static {
-		iconPaths.put(UserIdCause.class.getName(), "user-cause.png");
-		iconPaths.put(UserCause.class.getName(), "user-cause.png");
-		iconPaths.put(TimerTriggerCause.class.getName(), "timer-cause.png");
-		iconPaths.put(SCMTriggerCause.class.getName(), "scm-cause.png");
-		iconPaths.put(UpstreamCause.class.getName(), "upstream-cause.png");
-		iconPaths.put(CLICause.class.getName(), "cli-cause.png");
-		iconPaths.put(RemoteCause.class.getName(), "remote-cause.png");
-		iconPaths.put("org.jvnet.hudson.plugins.m2release.ReleaseCause", "user-cause.png");
-		iconPaths.put("com.cloudbees.jenkins.GitHubPushCause", "github-push-cause.png");
-		iconPaths.put("org.jenkinsci.plugins.ghprb.GhprbCause", "github-pull-request-cause.png");
-		iconPaths.put("org.jenkinsci.plugins.periodicreincarnation.PeriodicReincarnationBuildCause", "periodic-reincarnation.png");
-		iconPaths.put("com.chikli.hudson.plugin.naginator.NaginatorCause", "periodic-reincarnation.png");
-		iconPaths.put("com.cloudbees.plugins.flow.FlowCause", "flow-cause.png");
-		iconPaths.put("com.cloudbees.jenkins.plugins.BitBucketPushCause", "bitbucket.png");
-		iconPaths.put("hudson.plugins.git.GitStatus$CommitHookCause", "git-hook-cause.png");
-	}
-
+	// FIXME : useless?
 	public static BuildTriggerBadgePlugin getPlugin() {
 		return (BuildTriggerBadgePlugin) Jenkins.getInstance().getPlugin(BuildTriggerBadgePlugin.class);
 	}
@@ -96,5 +40,9 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 
 	public String getUrlName() {
 		return "";
+	}
+
+	public String getIcon() {
+		return new IconFinder(cause).find();
 	}
 }
