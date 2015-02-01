@@ -9,9 +9,11 @@ import hudson.model.Cause;
 import hudson.model.Cause.UpstreamCause;
 import hudson.model.FreeStyleProject;
 import hudson.model.queue.QueueTaskFuture;
+import hudson.triggers.SCMTrigger.SCMTriggerCause;
 
 import java.util.List;
 
+import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeDeactivator;
 import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeProvider;
 import org.junit.Rule;
 import org.junit.Test;
@@ -47,8 +49,8 @@ public class BuildTriggerBadgeActionTest {
 		public String provideIcon(Cause cause) {
 			return "...pouetpouet.png";
 		}
-
 	}
+
 	@Test
 	public void externallyAddedCause() throws Exception {
 		FreeStyleProject project = j.createFreeStyleProject();
@@ -56,12 +58,34 @@ public class BuildTriggerBadgeActionTest {
 		FreeStyleBuild build = futureBuild.get();
 		assertThat(build.getCauses()).hasSize(1);
 		assertThat(build.getCauses().get(0)).isInstanceOf(MyCause.class);
-		
+
 		List<BuildBadgeAction> badgeActions = build.getBadgeActions();
 		assertThat(badgeActions).hasSize(1);
 		BuildBadgeAction badgeAction = badgeActions.get(0);
 		assertThat(badgeAction).isInstanceOf(BuildTriggerBadgeAction.class);
 		BuildTriggerBadgeAction buildTriggerBadgeAction = (BuildTriggerBadgeAction) badgeAction;
 		assertThat(buildTriggerBadgeAction.getIcon()).contains("pouetpouet");
+	}
+
+	@TestExtension
+	public static class SCMTriggerCauseDisablingProvider extends BuildTriggerBadgeDeactivator {
+		@Override
+		public boolean vetoBadge(Cause cause) {
+			if (cause instanceof SCMTriggerCause) {
+				return true;
+			}
+			return false;
+		}
+	}
+
+	@Test
+	public void externallyDisabledCause() throws Exception {
+		FreeStyleProject project = j.createFreeStyleProject();
+		QueueTaskFuture<FreeStyleBuild> futureBuild = project.scheduleBuild2(0, new SCMTriggerCause("Boum"));
+		FreeStyleBuild build = futureBuild.get();
+		assertThat(build.getCauses()).hasSize(1);
+
+		List<BuildBadgeAction> badgeActions = build.getBadgeActions();
+		assertThat(badgeActions).hasSize(0);
 	}
 }
