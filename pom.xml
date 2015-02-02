@@ -82,5 +82,11 @@
 			<version>2.0M10</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.2</version> <!-- Same as in https://github.com/jenkinsci/jenkins/blob/jenkins-1.509.2/pom.xml#L98 -->
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 </project>

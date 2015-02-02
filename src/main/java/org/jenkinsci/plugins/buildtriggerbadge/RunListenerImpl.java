@@ -11,6 +11,8 @@ import java.util.List;
 import jenkins.model.Jenkins;
 
 import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeDeactivator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Listener to all build to add the badge action.
@@ -19,6 +21,7 @@ import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeDeactiv
  */
 @Extension
 public class RunListenerImpl extends RunListener<AbstractBuild> {
+	private static final Logger LOGGER = LoggerFactory.getLogger(RunListenerImpl.class);
 
 	public RunListenerImpl() {
 		super(AbstractBuild.class);
@@ -48,6 +51,7 @@ public class RunListenerImpl extends RunListener<AbstractBuild> {
 	private boolean isEnabled(Cause cause) {
 		for (BuildTriggerBadgeDeactivator deactivator : BuildTriggerBadgeDeactivator.all()) {
 			if (deactivator.vetoBadge(cause)) {
+				LOGGER.debug("Badge for cause '{}' disabled by extension ''", cause, deactivator);
 				return false;
 			}
 		}

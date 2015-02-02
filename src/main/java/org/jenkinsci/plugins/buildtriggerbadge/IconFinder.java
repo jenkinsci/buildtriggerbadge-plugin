@@ -16,6 +16,8 @@ import java.util.Map;
 import jenkins.model.Jenkins;
 
 import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Class responsible for finding the icon assocated with a build cause.
@@ -23,6 +25,8 @@ import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeProvide
  * @author Baptiste Mathus
  */
 public class IconFinder {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(IconFinder.class);
 
 	private Cause cause;
 
@@ -32,18 +36,17 @@ public class IconFinder {
 
 	public String find() {
 
-		// amongst providers todo
+		// Searching for externally defined cause/icon associations
 		for (BuildTriggerBadgeProvider provider : BuildTriggerBadgeProvider.all()) {
 			String providedIcon = provider.provideIcon(cause);
 			if (providedIcon != null) {
-				// TODO log !
+				LOGGER.debug("Badge for cause '{}' set/overriden by extension '{}': '{}'", cause, provider.getClass().getSimpleName());
 				return providedIcon;
 			}
 		}
 
-		// internal
+		// internal lookup if nothing found previously
 		Class<?> clazz = cause.getClass();
-
 		return internalFindForClass(clazz);
 	}
 
