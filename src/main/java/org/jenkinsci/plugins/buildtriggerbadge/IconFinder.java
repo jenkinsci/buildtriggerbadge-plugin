@@ -20,7 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Class responsible for finding the icon assocated with a build cause.
+ * Class responsible for finding the icon associated with a build cause.
  * 
  * @author Baptiste Mathus
  */
