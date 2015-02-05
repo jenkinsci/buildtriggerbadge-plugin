@@ -53,7 +53,7 @@ public class IconFinder {
 	private String internalFindForClass(Class clazz)
 	{
 		if (clazz == null) {
-			return "fallback-cause.png";
+			return getIconPath("fallback-cause.png");
 		}
 		String path = DEFAULT_ICONS.get(clazz.getName());
 		if (path == null) {
