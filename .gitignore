@@ -11,3 +11,6 @@ work
 .settings
 .classpath
 .project
+
+# jenv file
+.java-version
