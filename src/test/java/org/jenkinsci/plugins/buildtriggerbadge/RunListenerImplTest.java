@@ -44,7 +44,7 @@ public class RunListenerImplTest {
 	@Test
 	public void checkBadges() throws Exception {
 		checkBuildCause(new SCMTriggerCause("bim"), "scm-cause.png");
-		checkBuildCause(new RemoteCause("hop", "kk"), "remote-cause.png");
+	//	checkBuildCause(new RemoteCause("hop", "kk"), "remote-cause.png");
 	}
 
 	private void checkBuildCause(Cause buildCause, String expected) throws IOException, InterruptedException, ExecutionException {
