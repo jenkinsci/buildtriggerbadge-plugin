@@ -2,6 +2,7 @@ package org.jenkinsci.plugins.buildtriggerbadge;
 
 import hudson.model.BuildBadgeAction;
 import hudson.model.Cause;
+import hudson.model.Cause.UserIdCause;
 import jenkins.model.Jenkins;
 
 /**
@@ -23,7 +24,19 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 	public String getTooltip() {
 		return cause.getShortDescription();
 	}
-
+	/**
+	 * 
+	 * @return ·µ»Ø¹¹½¨
+	 */
+	public String getBuildUser() {
+	  if (cause instanceof UserIdCause) {
+        UserIdCause u = (UserIdCause) cause;
+        u.getUserName();
+        return u.getUserName();
+	  }
+      return null;
+  }
+	
 	// FIXME : useless?
 	public static BuildTriggerBadgePlugin getPlugin() {
 		return (BuildTriggerBadgePlugin) Jenkins.getInstance().getPlugin(BuildTriggerBadgePlugin.class);
