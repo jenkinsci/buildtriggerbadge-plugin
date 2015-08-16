@@ -6,6 +6,7 @@ import java.util.Map;
 
 import net.sf.json.JSONObject;
 
+import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
 import hudson.Extension;
@@ -24,6 +25,25 @@ import hudson.views.ListViewColumn;
  * 
  */
 public class LastBuildTriggerColumn extends ListViewColumn {
+	public static final String ICON_ONLY = "iconOnly";
+	public static final String ICON_AND_DESC = "iconAndDesc";
+
+	private String causeDisplayType = "iconOnly";
+
+	@DataBoundConstructor
+	public LastBuildTriggerColumn(String causeDisplayType) {
+		super();
+		this.causeDisplayType = causeDisplayType;
+	}
+
+	public LastBuildTriggerColumn() {
+		this(ICON_ONLY);
+	}
+
+	public String getCauseDisplayType() {
+		return causeDisplayType;
+	}
+
 	private static final class BuildNodeColumnDescriptor extends ListViewColumnDescriptor {
 		@Override
 		public String getDisplayName() {
@@ -32,7 +52,7 @@ public class LastBuildTriggerColumn extends ListViewColumn {
 
 		@Override
 		public ListViewColumn newInstance(final StaplerRequest request, final JSONObject formData) throws FormException {
-			return new LastBuildTriggerColumn();
+			return request.bindJSON(LastBuildTriggerColumn.class, formData);
 		}
 
 		@Override

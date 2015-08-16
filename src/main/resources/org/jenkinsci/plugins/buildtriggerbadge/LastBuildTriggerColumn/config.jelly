@@ -1,0 +1,12 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
+	<f:block>
+		<p>${%This column shows info about the cause of the last build}</p>
+		<f:entry title="${%Cause display format}">
+			<select name="causeDisplayType" class="setting-input">
+				<f:option value="iconOnly" selected="${instance.causeDisplayType.equals('iconOnly')}">${%Icon only}</f:option>
+				<f:option value="iconAndDesc" selected="${instance.causeDisplayType.equals('iconAndDesc')}">${%Icon and description}</f:option>
+			</select>
+		</f:entry>
+	</f:block>
+</j:jelly>
