@@ -79,6 +79,8 @@ public class IconFinder {
 		defineIconForCause("com.cloudbees.plugins.flow.FlowCause", "flow-cause.png");
 		defineIconForCause("com.cloudbees.jenkins.plugins.BitBucketPushCause", "bitbucket.png");
 		defineIconForCause("hudson.plugins.git.GitStatus$CommitHookCause", "git-hook-cause.png");
+		defineIconForCause("org.jenkinsci.plugins.urltrigger.URLTriggerCause", "url-trigger-cause.png");
+		defineIconForCause("stashpullrequestbuilder.stashpullrequestbuilder.StashCause", "github-pull-request-cause.png");
 	}
 
 	private static void defineIconForCause(Class clazz, String path) {
