@@ -6,7 +6,10 @@
 				<j:forEach var="causeEntry" varStatus="status" items="${entries}">
 					<j:set var="causeIconUrl" value="${causeEntry.key}" />
 					<j:set var="causeShortDesc" value="${causeEntry.value}" />
-					<img width="16" height="16" src="${rootURL}${causeIconUrl}" title="${causeEntry.value}" />
+					<img width="16" height="16" src="${rootURL}${causeIconUrl}" title="${causeShortDesc}" />
+					<j:if test="${it.causeDisplayType.equals('iconAndDesc')}">
+						<span>&#160;${causeShortDesc}</span>
+					</j:if>
 					<j:if test="${!status.last}">
 						<br/>
 					</j:if>
