@@ -1,18 +1,17 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
-import hudson.Extension;
-import hudson.model.TaskListener;
-import hudson.model.AbstractBuild;
-import hudson.model.Cause;
-import hudson.model.listeners.RunListener;
-
 import java.util.List;
-
-import jenkins.model.Jenkins;
 
 import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeDeactivator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import hudson.Extension;
+import hudson.model.Cause;
+import hudson.model.Run;
+import hudson.model.TaskListener;
+import hudson.model.listeners.RunListener;
+import jenkins.model.Jenkins;
 
 /**
  * Listener to all build to add the badge action.
@@ -20,15 +19,15 @@ import org.slf4j.LoggerFactory;
  * @author Michael Pailloncy
  */
 @Extension
-public class RunListenerImpl extends RunListener<AbstractBuild> {
+public class RunListenerImpl extends RunListener<Run> {
 	private static final Logger LOGGER = LoggerFactory.getLogger(RunListenerImpl.class);
 
 	public RunListenerImpl() {
-		super(AbstractBuild.class);
+		super(Run.class);
 	}
 
 	@Override
-	public void onStarted(AbstractBuild build, TaskListener listener) {
+	public void onStarted(Run build, TaskListener listener) {
 		BuildTriggerBadgePlugin plugin = Jenkins.getInstance().getPlugin(BuildTriggerBadgePlugin.class);
 		if (plugin.isActivated()) {
 			List<Cause> causes = CauseFilter.filter((List<Cause>) build.getCauses());
