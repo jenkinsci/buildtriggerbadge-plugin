@@ -74,6 +74,7 @@ public class IconFinder {
 		defineIconForCause("org.jvnet.hudson.plugins.m2release.ReleaseCause", "user-cause.png");
 		defineIconForCause("com.cloudbees.jenkins.GitHubPushCause", "github-push-cause.png");
 		defineIconForCause("org.jenkinsci.plugins.ghprb.GhprbCause", "github-pull-request-cause.png");
+		defineIconForCause("org.jenkinsci.plugins.github.pullrequest.GitHubPRCause", "github-pull-request-cause.png");
 		defineIconForCause("org.jenkinsci.plugins.periodicreincarnation.PeriodicReincarnationBuildCause", "periodic-reincarnation.png");
 		defineIconForCause("com.chikli.hudson.plugin.naginator.NaginatorCause", "periodic-reincarnation.png");
 		defineIconForCause("com.cloudbees.plugins.flow.FlowCause", "flow-cause.png");
