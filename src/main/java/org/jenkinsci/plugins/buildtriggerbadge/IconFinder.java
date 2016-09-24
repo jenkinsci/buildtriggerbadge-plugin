@@ -62,7 +62,7 @@ public class IconFinder {
 		return path;
 	}
 
-	protected static Map<String, String> DEFAULT_ICONS = new HashMap<String, String>();
+	private static final Map<String, String> DEFAULT_ICONS = new HashMap<String, String>();
 	static {
 		defineIconForCause(UserIdCause.class, "user-cause.png");
 		defineIconForCause(UserCause.class, "user-cause.png");
