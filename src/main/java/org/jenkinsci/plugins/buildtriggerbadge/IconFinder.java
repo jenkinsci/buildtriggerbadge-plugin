@@ -83,6 +83,7 @@ public class IconFinder {
 		defineIconForCause("org.jenkinsci.plugins.urltrigger.URLTriggerCause", "url-trigger-cause.png");
 		defineIconForCause("stashpullrequestbuilder.stashpullrequestbuilder.StashCause", "github-pull-request-cause.png");
 		defineIconForCause("jenkins.branch.BranchIndexingCause", "branch-indexing-cause.png");
+		defineIconForCause("org.jenkinsci.plugins.workflow.cps.replay.ReplayCause", "periodic-reincarnation.png");
 	}
 
 	private static void defineIconForCause(Class clazz, String path) {
