@@ -15,7 +15,7 @@ import java.util.concurrent.Future;
 
 import org.junit.Rule;
 import org.junit.Test;
-import org.jvnet.hudson.test.Bug;
+import org.jvnet.hudson.test.Issue;
 import org.jvnet.hudson.test.JenkinsRule;
 
 /**
@@ -27,7 +27,7 @@ public class RunListenerImplTest {
 	@Rule
 	public JenkinsRule j = new JenkinsRule();
 
-	@Bug(15474)
+	@Issue("JENKINS-15474")
 	@Test
 	public void sameIconMultipleTimesCorrection() throws IOException, InterruptedException, ExecutionException {
 		FreeStyleProject p = j.createFreeStyleProject();
