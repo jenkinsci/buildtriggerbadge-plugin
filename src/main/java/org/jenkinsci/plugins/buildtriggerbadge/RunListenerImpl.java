@@ -28,7 +28,7 @@ public class RunListenerImpl extends RunListener<Run> {
 
 	@Override
 	public void onStarted(Run build, TaskListener listener) {
-		BuildTriggerBadgePlugin plugin = Jenkins.getInstance().getPlugin(BuildTriggerBadgePlugin.class);
+		BuildTriggerBadgePlugin plugin = Jenkins.getActiveInstance().getPlugin(BuildTriggerBadgePlugin.class);
 		if (plugin.isActivated()) {
 			List<Cause> causes = CauseFilter.filter((List<Cause>) build.getCauses());
 			for (Cause cause : causes) {

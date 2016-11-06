@@ -29,6 +29,6 @@ public abstract class BuildTriggerBadgeProvider implements ExtensionPoint {
 	public abstract String provideIcon(Cause cause);
 
 	public static ExtensionList<BuildTriggerBadgeProvider> all() {
-		return Jenkins.getInstance().getExtensionList(BuildTriggerBadgeProvider.class);
+		return Jenkins.getActiveInstance().getExtensionList(BuildTriggerBadgeProvider.class);
 	}
 }

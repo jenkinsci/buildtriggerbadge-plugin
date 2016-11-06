@@ -96,7 +96,7 @@ public class IconFinder {
 	}
 
 	private static String getIconPath(String iconName) {
-		PluginWrapper wrapper = Jenkins.getInstance().getPluginManager().getPlugin(BuildTriggerBadgePlugin.class);
+		PluginWrapper wrapper = Jenkins.getActiveInstance().getPluginManager().getPlugin(BuildTriggerBadgePlugin.class);
 		return "/plugin/" + wrapper.getShortName() + "/images/" + iconName;
 	}
 }

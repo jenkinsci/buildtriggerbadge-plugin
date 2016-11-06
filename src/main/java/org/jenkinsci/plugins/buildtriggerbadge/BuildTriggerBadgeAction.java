@@ -26,7 +26,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
 
 	// FIXME : useless?
 	public static BuildTriggerBadgePlugin getPlugin() {
-		return (BuildTriggerBadgePlugin) Jenkins.getInstance().getPlugin(BuildTriggerBadgePlugin.class);
+		return (BuildTriggerBadgePlugin) Jenkins.getActiveInstance().getPlugin(BuildTriggerBadgePlugin.class);
 	}
 
 	// non use interface methods

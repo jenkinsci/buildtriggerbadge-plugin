@@ -20,6 +20,6 @@ public abstract class BuildTriggerBadgeDeactivator implements ExtensionPoint {
 	public abstract boolean vetoBadge(Cause cause);
 
 	public static ExtensionList<BuildTriggerBadgeDeactivator> all() {
-		return Jenkins.getInstance().getExtensionList(BuildTriggerBadgeDeactivator.class);
+		return Jenkins.getActiveInstance().getExtensionList(BuildTriggerBadgeDeactivator.class);
 	}
 }
