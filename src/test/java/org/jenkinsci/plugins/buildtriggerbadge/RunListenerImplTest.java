@@ -31,12 +31,13 @@ public class RunListenerImplTest {
 	@Test
 	public void sameIconMultipleTimesCorrection() throws IOException, InterruptedException, ExecutionException {
 		FreeStyleProject p = j.createFreeStyleProject();
-		Future<FreeStyleBuild> futureBuild = p.scheduleBuild2(20, new SCMTriggerCause("scm change 1"));
-		assertThat(p.scheduleBuild(new SCMTriggerCause("scm change 2"))).isFalse();
-		assertThat(p.scheduleBuild(new SCMTriggerCause("scm change 3"))).isFalse();
-		assertThat(p.scheduleBuild(new SCMTriggerCause("scm change 4"))).isFalse();
-		assertThat(p.scheduleBuild(new SCMTriggerCause("scm change 5"))).isFalse();
+		Future<FreeStyleBuild> futureBuild = p.scheduleBuild2(2, new SCMTriggerCause("scm change 1"));
+		p.scheduleBuild2(1, new SCMTriggerCause("scm change 2"));
+		p.scheduleBuild2(1, new SCMTriggerCause("scm change 3"));
+		p.scheduleBuild2(1, new SCMTriggerCause("scm change 4"));
+		p.scheduleBuild2(1, new SCMTriggerCause("scm change 5"));
 		FreeStyleBuild build = futureBuild.get();
+		assertThat(build.getCauses()).hasSize(5);
 		// there should be only one badge action here
 		assertThat(build.getBadgeActions()).hasSize(1);
 	}
