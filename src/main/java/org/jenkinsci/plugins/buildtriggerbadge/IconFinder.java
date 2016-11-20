@@ -76,13 +76,13 @@ public class IconFinder {
 		defineIconForCause("org.jenkinsci.plugins.ghprb.GhprbCause", "github-pull-request-cause.png");
 		defineIconForCause("org.jenkinsci.plugins.github.pullrequest.GitHubPRCause", "github-pull-request-cause.png");
 		defineIconForCause("com.cloudbees.jenkins.plugins.github_pull.GitHubPullRequestCause", "github-pull-request-cause.png");
+		defineIconForCause("stashpullrequestbuilder.stashpullrequestbuilder.StashCause", "github-pull-request-cause.png");
 		defineIconForCause("org.jenkinsci.plugins.periodicreincarnation.PeriodicReincarnationBuildCause", "periodic-reincarnation.png");
 		defineIconForCause("com.chikli.hudson.plugin.naginator.NaginatorCause", "periodic-reincarnation.png");
 		defineIconForCause("com.cloudbees.plugins.flow.FlowCause", "flow-cause.png");
 		defineIconForCause("com.cloudbees.jenkins.plugins.BitBucketPushCause", "bitbucket.png");
 		defineIconForCause("hudson.plugins.git.GitStatus$CommitHookCause", "git-hook-cause.png");
 		defineIconForCause("org.jenkinsci.plugins.urltrigger.URLTriggerCause", "url-trigger-cause.png");
-		defineIconForCause("stashpullrequestbuilder.stashpullrequestbuilder.StashCause", "github-pull-request-cause.png");
 		defineIconForCause("jenkins.branch.BranchIndexingCause", "branch-indexing-cause.png");
 		defineIconForCause("org.jenkinsci.plugins.workflow.cps.replay.ReplayCause", "periodic-reincarnation.png");
 		defineIconForCause("org.jenkinsci.lib.xtrigger.XTriggerCause", "xtrigger.png");
