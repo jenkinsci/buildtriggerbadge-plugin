@@ -84,6 +84,7 @@ public class IconFinder {
 		defineIconForCause("hudson.plugins.git.GitStatus$CommitHookCause", "git-hook-cause.png");
 		defineIconForCause("org.jenkinsci.plugins.urltrigger.URLTriggerCause", "url-trigger-cause.png");
 		defineIconForCause("jenkins.branch.BranchIndexingCause", "branch-indexing-cause.png");
+		defineIconForCause("jenkins.branch.BranchEventCause", "branch-event-cause.png");
 		defineIconForCause("org.jenkinsci.plugins.workflow.cps.replay.ReplayCause", "periodic-reincarnation.png");
 		defineIconForCause("org.jenkinsci.lib.xtrigger.XTriggerCause", "xtrigger.png");
 	}
