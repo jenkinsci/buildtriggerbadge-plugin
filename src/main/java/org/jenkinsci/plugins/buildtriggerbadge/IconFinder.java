@@ -87,6 +87,7 @@ public class IconFinder {
 		defineIconForCause("jenkins.branch.BranchEventCause", "branch-event-cause.png");
 		defineIconForCause("org.jenkinsci.plugins.workflow.cps.replay.ReplayCause", "periodic-reincarnation.png");
 		defineIconForCause("org.jenkinsci.lib.xtrigger.XTriggerCause", "xtrigger.png");
+		defineIconForCause("com.cloudbees.workflow.cps.checkpoint.RestoreFromCheckpointCause", "checkpoint.png");
 	}
 
 	private static void defineIconForCause(Class clazz, String path) {
