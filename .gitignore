@@ -14,3 +14,4 @@ work
 
 # jenv file
 .java-version
+.flattened-pom.xml
