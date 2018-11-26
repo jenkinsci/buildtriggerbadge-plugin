@@ -1,5 +1,6 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
+import hudson.PluginManager;
 import hudson.PluginWrapper;
 import hudson.cli.BuildCommand.CLICause;
 import hudson.model.Cause;
@@ -9,15 +10,13 @@ import hudson.model.Cause.UserCause;
 import hudson.model.Cause.UserIdCause;
 import hudson.triggers.SCMTrigger.SCMTriggerCause;
 import hudson.triggers.TimerTrigger.TimerTriggerCause;
+import jenkins.model.Jenkins;
+import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeProvider;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import jenkins.model.Jenkins;
-
-import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeProvider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Class responsible for finding the icon associated with a build cause.
@@ -26,7 +25,9 @@ import org.slf4j.LoggerFactory;
  */
 public class IconFinder {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(IconFinder.class);
+	private static final Logger LOGGER = Logger.getLogger(IconFinder.class.getSimpleName());
+
+	private static final String IMAGES_PATH;
 
 	private Cause cause;
 
@@ -40,7 +41,9 @@ public class IconFinder {
 		for (BuildTriggerBadgeProvider provider : BuildTriggerBadgeProvider.all()) {
 			String providedIcon = provider.provideIcon(cause);
 			if (providedIcon != null) {
-				LOGGER.debug("Badge for cause '{}' set/overriden by extension '{}': '{}'", cause, provider.getClass().getSimpleName());
+				LOGGER.log(Level.FINEST,
+				           "Badge for cause '{0}' set/overriden by extension '{1}': '{2}'",
+				           new Object[]{cause, provider.getClass().getSimpleName()});
 				return providedIcon;
 			}
 		}
@@ -64,6 +67,9 @@ public class IconFinder {
 
 	private static final Map<String, String> DEFAULT_ICONS = new HashMap<String, String>();
 	static {
+
+		IMAGES_PATH = "/plugin/" + BuildTriggerBadgePlugin.get().getShortName() + "/images/";
+
 		defineIconForCause(UserIdCause.class, "user-cause.png");
 		defineIconForCause(UserCause.class, "user-cause.png");
 		defineIconForCause(TimerTriggerCause.class, "timer-cause.png");
@@ -99,7 +105,7 @@ public class IconFinder {
 	}
 
 	private static String getIconPath(String iconName) {
-		PluginWrapper wrapper = Jenkins.getActiveInstance().getPluginManager().getPlugin(BuildTriggerBadgePlugin.class);
-		return "/plugin/" + wrapper.getShortName() + "/images/" + iconName;
+
+		return IMAGES_PATH + iconName;
 	}
 }

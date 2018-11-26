@@ -2,6 +2,7 @@ package org.jenkinsci.plugins.buildtriggerbadge;
 
 import java.util.List;
 
+import hudson.PluginWrapper;
 import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeDeactivator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,8 +29,8 @@ public class RunListenerImpl extends RunListener<Run> {
 
 	@Override
 	public void onStarted(Run build, TaskListener listener) {
-		BuildTriggerBadgePlugin plugin = Jenkins.getActiveInstance().getPlugin(BuildTriggerBadgePlugin.class);
-		if (plugin.isActivated()) {
+		PluginWrapper plugin = BuildTriggerBadgePlugin.get();
+		if (plugin.isActive()) {
 			List<Cause> causes = CauseFilter.filter((List<Cause>) build.getCauses());
 			for (Cause cause : causes) {
 				if (isEnabled(cause)) {
