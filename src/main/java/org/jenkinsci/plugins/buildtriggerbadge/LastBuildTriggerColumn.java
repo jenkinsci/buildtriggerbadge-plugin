@@ -17,6 +17,8 @@ import hudson.model.Run;
 import hudson.views.ListViewColumnDescriptor;
 import hudson.views.ListViewColumn;
 
+import javax.annotation.Nonnull;
+
 /**
  * Column showing last build cause as icon and description
  * 
@@ -48,11 +50,6 @@ public class LastBuildTriggerColumn extends ListViewColumn {
 		@Override
 		public String getDisplayName() {
 			return Messages.LastBuildTriggerColumn_DisplayName();
-		}
-
-		@Override
-		public ListViewColumn newInstance(final StaplerRequest request, final JSONObject formData) throws FormException {
-			return request.bindJSON(LastBuildTriggerColumn.class, formData);
 		}
 
 		@Override

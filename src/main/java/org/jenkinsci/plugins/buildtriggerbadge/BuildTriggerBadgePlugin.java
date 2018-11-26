@@ -1,16 +1,18 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
 import hudson.Plugin;
+import hudson.PluginWrapper;
 import hudson.model.Descriptor.FormException;
-
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-
+import jenkins.model.Jenkins;
 import net.sf.json.JSONObject;
-
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
+
+import javax.annotation.Nonnull;
+import javax.servlet.ServletException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Plugin extension.
@@ -18,6 +20,8 @@ import org.kohsuke.stapler.StaplerRequest;
  * @author Michael Pailloncy
  */
 public class BuildTriggerBadgePlugin extends Plugin {
+
+	private static final Logger LOGGER = Logger.getLogger(BuildTriggerBadgePlugin.class.getSimpleName());
 
 	/** Indicates if the plugin is activated. */
 	private boolean activated = true;
@@ -29,6 +33,16 @@ public class BuildTriggerBadgePlugin extends Plugin {
 	@DataBoundConstructor
 	public BuildTriggerBadgePlugin(boolean activated) {
 		this.activated = activated;
+	}
+
+	@Nonnull
+	public static PluginWrapper get() {
+		final PluginWrapper plugin = Jenkins.getActiveInstance().getPluginManager().getPlugin(BuildTriggerBadgePlugin.class);
+		if(plugin==null) {
+			LOGGER.log(Level.SEVERE, "Could not find the descriptor of the *current* plugin, something is very wrong");
+			throw new IllegalStateException("");
+		}
+		return plugin;
 	}
 
 	@Override
