@@ -94,6 +94,7 @@ public class IconFinder {
 		defineIconForCause("org.jenkinsci.plugins.workflow.cps.replay.ReplayCause", "periodic-reincarnation.png");
 		defineIconForCause("org.jenkinsci.lib.xtrigger.XTriggerCause", "xtrigger.png");
 		defineIconForCause("com.cloudbees.workflow.cps.checkpoint.RestoreFromCheckpointCause", "checkpoint.png");
+		defineIconForCause("org.jenkinsci.plugins.parameterizedscheduler.ParameterizedTimerTriggerCause", "timer-cause.png");
 	}
 
 	private static void defineIconForCause(Class clazz, String path) {
