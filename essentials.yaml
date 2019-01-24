@@ -5,3 +5,6 @@ ath:
   athImage: "jenkins/ath@sha256:284c2fdfaf1a51e95783126367c0a88c07af83ff9234063d12ba3001959628e8"
   categories:
     - org.jenkinsci.test.acceptance.junit.SmokeTest
+pct:
+  plugins:
+    - "buildtriggerbadge"
