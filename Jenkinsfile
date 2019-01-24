@@ -8,3 +8,5 @@ buildPlugin(configurations: [
   [ platform: "linux", jdk: "11", jenkins: coreJdk11Version, javaLevel: "8" ],
   [ platform: "windows", jdk: "11", jenkins: coreJdk11Version, javaLevel: "8" ]
 ])
+
+essentialsTest()
