@@ -35,6 +35,8 @@
 		<revision>2.11</revision>
 		<changelist>-SNAPSHOT</changelist>
 
+		<hpi.noDetachedPluginUntil>2.112</hpi.noDetachedPluginUntil>
+
 	</properties>
 
 	<scm>
