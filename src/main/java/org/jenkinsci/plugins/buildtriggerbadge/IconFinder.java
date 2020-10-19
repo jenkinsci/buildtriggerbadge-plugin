@@ -89,6 +89,7 @@ public class IconFinder {
 		defineIconForCause("com.cloudbees.jenkins.plugins.BitBucketPushCause", "bitbucket.png");
 		defineIconForCause("hudson.plugins.git.GitStatus$CommitHookCause", "git-hook-cause.png");
 		defineIconForCause("org.jenkinsci.plugins.urltrigger.URLTriggerCause", "url-trigger-cause.png");
+		defineIconForCause("org.jenkinsci.plugins.gwt.GenericCause", "url-trigger-cause.png");
 		defineIconForCause("jenkins.branch.BranchIndexingCause", "branch-indexing-cause.png");
 		defineIconForCause("jenkins.branch.BranchEventCause", "branch-event-cause.png");
 		defineIconForCause("org.jenkinsci.plugins.workflow.cps.replay.ReplayCause", "periodic-reincarnation.png");
