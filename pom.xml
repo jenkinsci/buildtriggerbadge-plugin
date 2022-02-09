@@ -7,7 +7,7 @@
 	</parent>
 
 	<artifactId>buildtriggerbadge</artifactId>
-	<version>${revision}${changelist}</version>
+	<version>${changelist}</version>
 	<packaging>hpi</packaging>
 
 	<name>Build Trigger Badge Plugin</name>
@@ -29,20 +29,19 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jenkins.version>2.204.6</jenkins.version>
+        <jenkins.version>2.277.4</jenkins.version>
 		<java.level>8</java.level>
 
-		<revision>2.12</revision>
-		<changelist>-SNAPSHOT</changelist>
-
+		<changelist>99999-SNAPSHOT</changelist>
+		<githubRepo>jenkinsci/buildtriggerbadge-plugin</githubRepo>
 	</properties>
 
 	<scm>
-	    <connection>scm:git:git://github.com/jenkinsci/buildtriggerbadge-plugin.git</connection>
-	    <developerConnection>scm:git:ssh://git@github.com/jenkinsci/buildtriggerbadge-plugin.git</developerConnection>
-	    <url>https://github.com/jenkinsci/buildtriggerbadge-plugin</url>
-  	  <tag>${scmTag}</tag>
-  </scm>
+		<connection>scm:git:git://github.com/${gitHubRepo}.git</connection>
+		<developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
+		<url>https://github.com/${gitHubRepo}</url>
+		<tag>${scmTag}</tag>
+	</scm>
 
 	<repositories>
 		<repository>
@@ -66,7 +65,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.mockito</groupId>

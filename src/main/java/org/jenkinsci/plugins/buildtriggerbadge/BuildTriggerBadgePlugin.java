@@ -1,5 +1,6 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Plugin;
 import hudson.PluginWrapper;
 import hudson.model.Descriptor.FormException;
@@ -8,7 +9,6 @@ import net.sf.json.JSONObject;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
-import javax.annotation.Nonnull;
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -35,7 +35,7 @@ public class BuildTriggerBadgePlugin extends Plugin {
 		this.activated = activated;
 	}
 
-	@Nonnull
+	@NonNull
 	public static PluginWrapper get() {
 		final PluginWrapper plugin = Jenkins.getActiveInstance().getPluginManager().getPlugin(BuildTriggerBadgePlugin.class);
 		if(plugin==null) {

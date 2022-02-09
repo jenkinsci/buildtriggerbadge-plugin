@@ -17,7 +17,6 @@ import hudson.model.Run;
 import hudson.views.ListViewColumnDescriptor;
 import hudson.views.ListViewColumn;
 
-import javax.annotation.Nonnull;
 
 /**
  * Column showing last build cause as icon and description
