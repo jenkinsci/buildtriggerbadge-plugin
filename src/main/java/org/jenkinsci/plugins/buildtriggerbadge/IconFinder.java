@@ -83,6 +83,7 @@ public class IconFinder {
 		defineIconForCause("org.jenkinsci.plugins.github.pullrequest.GitHubPRCause", "github-pull-request-cause.svg");
 		defineIconForCause("com.cloudbees.jenkins.plugins.github_pull.GitHubPullRequestCause", "github-pull-request-cause.svg");
 		defineIconForCause("stashpullrequestbuilder.stashpullrequestbuilder.StashCause", "github-pull-request-cause.svg");
+		defineIconForCause("io.jenkins.plugins.gitlabbranchsource.GitLabMergeRequestCommentCause", "gitlab-merge-request-comment.svg");
 		defineIconForCause("org.jenkinsci.plugins.periodicreincarnation.PeriodicReincarnationBuildCause", "periodic-reincarnation.svg");
 		defineIconForCause("com.chikli.hudson.plugin.naginator.NaginatorCause", "periodic-reincarnation.svg");
 		defineIconForCause("com.cloudbees.plugins.flow.FlowCause", "flow-cause.svg");
