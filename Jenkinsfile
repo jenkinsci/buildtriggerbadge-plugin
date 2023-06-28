@@ -3,6 +3,6 @@ buildPlugin(configurations: [
     [ platform: "windows", jdk: "8", jenkins: null ],
 
     // More recent LTS candidate
-    [ platform: "linux", jdk: "8", jenkins: '2.332', javaLevel: "11" ],
+    [ platform: "linux", jdk: "8", jenkins: '2.332' ],
 
 ])
