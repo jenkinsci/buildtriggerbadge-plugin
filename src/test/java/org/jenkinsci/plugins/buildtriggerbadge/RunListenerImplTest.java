@@ -44,8 +44,8 @@ public class RunListenerImplTest {
 
 	@Test
 	public void checkBadges() throws Exception {
-		checkBuildCause(new SCMTriggerCause("bim"), "scm-cause.png");
-		checkBuildCause(new RemoteCause("hop", "kk"), "remote-cause.png");
+		checkBuildCause(new SCMTriggerCause("bim"), "symbol-scm-cause");
+		checkBuildCause(new RemoteCause("hop", "kk"), "symbol-radio-outline");
 	}
 
 	private void checkBuildCause(Cause buildCause, String expected) throws IOException, InterruptedException, ExecutionException {
@@ -57,6 +57,6 @@ public class RunListenerImplTest {
 		BuildBadgeAction badgeAction = badgeActions.get(0);
 		assertThat(badgeAction).isInstanceOf(BuildTriggerBadgeAction.class);
 		BuildTriggerBadgeAction buildTriggerBadgeAction = (BuildTriggerBadgeAction) badgeAction;
-		assertThat(buildTriggerBadgeAction.getIcon()).contains(expected);
+		assertThat(buildTriggerBadgeAction.getIcon()).startsWith(expected);
 	}
 }
