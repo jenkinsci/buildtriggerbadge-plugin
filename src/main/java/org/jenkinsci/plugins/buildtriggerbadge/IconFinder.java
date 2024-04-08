@@ -62,7 +62,7 @@ public class IconFinder {
 
 	private static final Map<String, String> DEFAULT_ICONS = new HashMap<String, String>();
 	static {
-		defineIconForCause(UserIdCause.class, "symbol-git plugin-buildtriggerbadge");
+		defineIconForCause(UserIdCause.class, "symbol-person-outline plugin-ionicons-api");
 		defineIconForCause(UserCause.class, "symbol-person-outline plugin-ionicons-api");
 		defineIconForCause(TimerTriggerCause.class, "symbol-time-outline plugin-ionicons-api");
 		defineIconForCause(SCMTriggerCause.class, "symbol-scm-cause plugin-buildtriggerbadge");
@@ -87,7 +87,7 @@ public class IconFinder {
 		defineIconForCause("jenkins.branch.BranchEventCause", "symbol-git-branch-outline plugin-ionicons-api");
 		defineIconForCause("org.jenkinsci.plugins.workflow.cps.replay.ReplayCause", "symbol-refresh-outline plugin-ionicons-api");
 		defineIconForCause("org.jenkinsci.lib.xtrigger.XTriggerCause", "symbol-xtrigger plugin-buildtriggerbadge");
-		defineIconForCause("com.cloudbees.workflow.cps.checkpoint.RestoreFromCheckpointCause", "symbol-checkpoint-outline plugin-ionicons-api");
+		defineIconForCause("com.cloudbees.workflow.cps.checkpoint.RestoreFromCheckpointCause", "symbol-location-outline plugin-ionicons-api");
 		defineIconForCause("org.jenkinsci.plugins.parameterizedscheduler.ParameterizedTimerTriggerCause", "symbol-time-outline plugin-ionicons-api");
 	}
 
