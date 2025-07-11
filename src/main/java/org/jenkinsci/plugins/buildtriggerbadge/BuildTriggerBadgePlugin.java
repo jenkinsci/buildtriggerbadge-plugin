@@ -7,9 +7,9 @@ import hudson.model.Descriptor.FormException;
 import jenkins.model.Jenkins;
 import net.sf.json.JSONObject;
 import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.StaplerRequest;
+import org.kohsuke.stapler.StaplerRequest2;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,7 +46,7 @@ public class BuildTriggerBadgePlugin extends Plugin {
 	}
 
 	@Override
-	public void configure(StaplerRequest req, JSONObject formData) throws IOException, ServletException, FormException {
+	public void configure(StaplerRequest2 req, JSONObject formData) throws IOException, ServletException, FormException {
 
 		super.configure(req, formData);
 		// get activated value from system configuration save.
