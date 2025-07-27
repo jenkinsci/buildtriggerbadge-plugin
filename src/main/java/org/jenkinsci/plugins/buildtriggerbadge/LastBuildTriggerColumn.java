@@ -7,7 +7,7 @@ import java.util.Map;
 import net.sf.json.JSONObject;
 
 import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.StaplerRequest;
+import org.kohsuke.stapler.StaplerRequest2;
 
 import hudson.Extension;
 import hudson.model.Cause;
