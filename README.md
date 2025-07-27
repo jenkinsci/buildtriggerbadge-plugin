@@ -1,5 +1,9 @@
-buildtriggerbadge-plugin
+Build Trigger Badge Plugin
 ========================
+
+[![buildtriggerbadge version](https://img.shields.io/jenkins/plugin/v/buildtriggerbadge.svg?label=buildtriggerbadge)](https://plugins.jenkins.io/buildtriggerbadge)
+[![buildtriggerbadge installs](https://img.shields.io/jenkins/plugin/i/buildtriggerbadge.svg)](https://plugins.jenkins.io/buildtriggerbadge)
+[![buildtriggerbadge license](https://img.shields.io/github/license/jenkinsci/buildtriggerbadge-plugin)](https://github.com/jenkinsci/buildtriggerbadge-plugin/blob/master/LICENSE)
 
 Jenkins' plugin to display an icon representing the trigger cause of a build.
 

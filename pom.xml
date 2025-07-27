@@ -1,69 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.jenkins-ci.plugins</groupId>
-		<artifactId>plugin</artifactId>
-		<version>5.18</version>
-		<relativePath />
-	</parent>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jenkins-ci.plugins</groupId>
+    <artifactId>plugin</artifactId>
+    <version>5.18</version>
+    <relativePath />
+  </parent>
 
-	<artifactId>buildtriggerbadge</artifactId>
-	<version>${changelist}</version>
-	<packaging>hpi</packaging>
+  <artifactId>buildtriggerbadge</artifactId>
+  <version>${changelist}</version>
+  <packaging>hpi</packaging>
 
-	<name>Build Trigger Badge Plugin</name>
-	<description>Displays icon(s) representing the cause(s) of a build.</description>
-	<url>https://github.com/jenkinsci/buildtriggerbadge-plugin</url>
+  <name>Build Trigger Badge Plugin</name>
+  <description>Displays icon(s) representing the cause(s) of a build.</description>
+  <url>https://github.com/jenkinsci/buildtriggerbadge-plugin</url>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <scm>
+    <connection>scm:git:https://github.com/${gitHubRepo}.git</connection>
+    <developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
+    <tag>${scmTag}</tag>
+    <url>https://github.com/${gitHubRepo}</url>
+  </scm>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jenkins.version>2.492.3</jenkins.version>
-		<changelist>99999-SNAPSHOT</changelist>
-		<githubRepo>jenkinsci/buildtriggerbadge-plugin</githubRepo>
-	</properties>
+    <changelist>99999-SNAPSHOT</changelist>
+    <gitHubRepo>jenkinsci/buildtriggerbadge-plugin</gitHubRepo>
 
-	<scm>
-		<connection>scm:git:https://github.com/${gitHubRepo}.git</connection>
-		<developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
-		<url>https://github.com/${gitHubRepo}</url>
-		<tag>${scmTag}</tag>
-	</scm>
+    <spotbugs.effort>Max</spotbugs.effort>
+    <spotbugs.threshold>Low</spotbugs.threshold>
+    <spotless.check.skip>false</spotless.check.skip>
+  </properties>
 
-	<repositories>
-		<repository>
-			<id>repo.jenkins-ci.org</id>
-			<url>https://repo.jenkins-ci.org/public/</url>
-		</repository>
-	</repositories>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.jenkins.tools.bom</groupId>
+        <artifactId>bom-2.361.x</artifactId>
+        <version>2062.v154408a_24d20</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>repo.jenkins-ci.org</id>
-			<url>https://repo.jenkins-ci.org/public/</url>
-		</pluginRepository>
-	</pluginRepositories>
+  <dependencies>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>ionicons-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>io.jenkins.tools.bom</groupId>
-				<artifactId>bom-2.361.x</artifactId>
-				<version>2062.v154408a_24d20</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	<dependencies>
-		<dependency>
-			<groupId>io.jenkins.plugins</groupId>
-			<artifactId>ionicons-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>central</id>
+      <url>https://repo1.maven.org/maven2/</url>
+    </pluginRepository>
+  </pluginRepositories>
 </project>
