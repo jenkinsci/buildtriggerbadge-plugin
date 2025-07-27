@@ -17,21 +17,19 @@ import org.slf4j.LoggerFactory;
  * @author Michael Pailloncy
  */
 @Extension
-public class RunListenerImpl extends RunListener<Run> {
+public class RunListenerImpl extends RunListener<Run<?, ?>> {
     private static final Logger LOGGER = LoggerFactory.getLogger(RunListenerImpl.class);
-
-    public RunListenerImpl() {
-        super(Run.class);
-    }
 
     @Override
     public void onStarted(Run build, TaskListener listener) {
         PluginWrapper plugin = BuildTriggerBadgePlugin.get();
         if (plugin.isActive()) {
             List<Cause> causes = CauseFilter.filter(build.getCauses());
-            for (Cause cause : causes) {
-                if (isEnabled(cause)) {
-                    build.addAction(new BuildTriggerBadgeAction(cause));
+            if (causes != null) {
+                for (Cause cause : causes) {
+                    if (isEnabled(cause)) {
+                        build.addAction(new BuildTriggerBadgeAction(cause));
+                    }
                 }
             }
         }

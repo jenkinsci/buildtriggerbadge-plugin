@@ -1,5 +1,6 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.ExtensionList;
 import hudson.model.BuildBadgeAction;
 import hudson.model.Cause;
@@ -16,7 +17,7 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
     /**
      * Initialize causes of the build.
      */
-    public BuildTriggerBadgeAction(Cause cause) {
+    public BuildTriggerBadgeAction(@NonNull Cause cause) {
         this.cause = cause;
     }
 

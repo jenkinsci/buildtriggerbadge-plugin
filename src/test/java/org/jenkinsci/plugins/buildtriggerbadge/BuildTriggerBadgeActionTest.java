@@ -9,6 +9,7 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.model.BuildBadgeAction;
 import hudson.model.Cause;
 import hudson.model.Cause.UpstreamCause;
@@ -56,7 +57,7 @@ class BuildTriggerBadgeActionTest {
     public static class MyCauseProvider extends BuildTriggerBadgeProvider {
 
         @Override
-        public String provideIcon(Cause cause) {
+        public String provideIcon(@NonNull Cause cause) {
             return "...pouetpouet.png";
         }
     }
@@ -80,7 +81,7 @@ class BuildTriggerBadgeActionTest {
     @TestExtension
     public static class SCMTriggerCauseDisablingProvider extends BuildTriggerBadgeDeactivator {
         @Override
-        public boolean vetoBadge(Cause cause) {
+        public boolean vetoBadge(@NonNull Cause cause) {
             return cause instanceof SCMTriggerCause;
         }
     }
