@@ -25,9 +25,11 @@ public class BuildTriggerBadgePlugin extends Plugin {
     public static final String FIELD_ACTIVATED = "buildtriggerbadge_activated";
 
     /** Indicates if the plugin is activated. */
-    private boolean activated = true;
+    private boolean activated;
 
-    public BuildTriggerBadgePlugin() {}
+    public BuildTriggerBadgePlugin() {
+        this(true);
+    }
 
     @DataBoundConstructor
     public BuildTriggerBadgePlugin(boolean activated) {

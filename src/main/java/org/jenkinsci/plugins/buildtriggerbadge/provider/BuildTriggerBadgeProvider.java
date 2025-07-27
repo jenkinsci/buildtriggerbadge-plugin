@@ -1,5 +1,7 @@
 package org.jenkinsci.plugins.buildtriggerbadge.provider;
 
+import edu.umd.cs.findbugs.annotations.CheckForNull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.ExtensionList;
 import hudson.ExtensionPoint;
 import hudson.model.Cause;
@@ -25,7 +27,8 @@ public abstract class BuildTriggerBadgeProvider implements ExtensionPoint {
      *
      * @return the URL to the icon for that cause, null if none provided.
      */
-    public abstract String provideIcon(Cause cause);
+    @CheckForNull
+    public abstract String provideIcon(@NonNull Cause cause);
 
     public static ExtensionList<BuildTriggerBadgeProvider> all() {
         return ExtensionList.lookup(BuildTriggerBadgeProvider.class);

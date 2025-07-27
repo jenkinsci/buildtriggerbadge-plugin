@@ -1,5 +1,7 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
+import edu.umd.cs.findbugs.annotations.CheckForNull;
+import edu.umd.cs.findbugs.annotations.Nullable;
 import hudson.model.Cause;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,16 +15,17 @@ import java.util.Set;
  *
  * @author Michael Pailloncy
  * @author ljader
- *
  */
 public class CauseFilter {
+
     /**
      * Filter causes by Class type and description
      *
      * @param inputCauses list of causes
      * @return filtered list or null
      */
-    public static List<Cause> filter(List<Cause> inputCauses) {
+    @CheckForNull
+    public static List<Cause> filter(@Nullable List<Cause> inputCauses) {
         if (inputCauses == null) {
             return null;
         }

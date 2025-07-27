@@ -1,5 +1,6 @@
 package org.jenkinsci.plugins.buildtriggerbadge.provider;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.ExtensionList;
 import hudson.ExtensionPoint;
 import hudson.model.Cause;
@@ -16,7 +17,7 @@ public abstract class BuildTriggerBadgeDeactivator implements ExtensionPoint {
      * @param cause the cause whose disabling is in question.
      * @return true if the cause must not have a badge, else false.
      */
-    public abstract boolean vetoBadge(Cause cause);
+    public abstract boolean vetoBadge(@NonNull Cause cause);
 
     public static ExtensionList<BuildTriggerBadgeDeactivator> all() {
         return ExtensionList.lookup(BuildTriggerBadgeDeactivator.class);

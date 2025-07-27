@@ -1,5 +1,6 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.cli.BuildCommand.CLICause;
 import hudson.model.Cause;
 import hudson.model.Cause.RemoteCause;
@@ -25,10 +26,11 @@ public class IconFinder {
 
     private final Cause cause;
 
-    public IconFinder(Cause cause) {
+    public IconFinder(@NonNull Cause cause) {
         this.cause = cause;
     }
 
+    @NonNull
     public String find() {
 
         // Searching for externally defined cause/icon associations
@@ -47,6 +49,7 @@ public class IconFinder {
         return internalFindForClass(clazz);
     }
 
+    @NonNull
     private String internalFindForClass(Class<?> clazz) {
         if (clazz == null) {
             return "symbol-help-outline plugin-ionicons-api";
