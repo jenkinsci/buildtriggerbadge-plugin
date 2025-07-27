@@ -24,11 +24,13 @@
   </scm>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jenkins.version>2.492.3</jenkins.version>
     <changelist>99999-SNAPSHOT</changelist>
+    <!-- https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/ -->
+    <jenkins.baseline>2.492</jenkins.baseline>
+    <jenkins.version>${jenkins.baseline}.3</jenkins.version>
     <gitHubRepo>jenkinsci/buildtriggerbadge-plugin</gitHubRepo>
 
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spotbugs.effort>Max</spotbugs.effort>
     <spotbugs.threshold>Low</spotbugs.threshold>
     <spotless.check.skip>false</spotless.check.skip>
@@ -38,8 +40,8 @@
     <dependencies>
       <dependency>
         <groupId>io.jenkins.tools.bom</groupId>
-        <artifactId>bom-2.361.x</artifactId>
-        <version>2062.v154408a_24d20</version>
+        <artifactId>bom-${jenkins.baseline}.x</artifactId>
+        <version>4924.v6b_eb_a_79a_d9d0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
