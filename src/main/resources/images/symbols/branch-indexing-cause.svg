@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="96.201447mm" height="132.63585mm" viewBox="0 0 96.201447 132.63585" version="1.1" id="svg5" inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)" sodipodi:docname="branch-indexing-cause.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+    <g inkscape:label="Ebene 1" inkscape:groupmode="layer" id="layer1" transform="translate(-11.732202,1.2363261)">
+        <g id="g32" transform="matrix(0.26458333,0,0,0.26458333,-13.667798,-9.7029927)">
+            <circle cx="160" cy="96" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" id="circle11" />
+            <circle cx="160" cy="416" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" id="circle13" />
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M 160,368 V 144" id="path15" />
+            <circle cx="352" cy="160" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" id="circle17" />
+            <path d="m 352,208 c 0,128 -192,48 -192,160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" id="path19" /> </g>
+        <g id="g48" transform="matrix(0.1494071,0,0,0.13783444,43.389778,66.619114)">
+            <path d="m 320,146 c 0,0 24.36,-12 -64,-12 a 160,160 0 1 0 160,160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" id="path36" />
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="m 256,58 80,80 -80,80" id="path38" /> </g>
+    </g>
+</svg>
