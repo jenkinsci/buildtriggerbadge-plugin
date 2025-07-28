@@ -1,9 +1,9 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
 import edu.umd.cs.findbugs.annotations.NonNull;
-import hudson.ExtensionList;
 import hudson.model.BuildBadgeAction;
 import hudson.model.Cause;
+import jenkins.model.Jenkins;
 
 /**
  * Badge action of the build trigger cause.
@@ -25,9 +25,9 @@ public class BuildTriggerBadgeAction implements BuildBadgeAction {
         return cause.getShortDescription();
     }
 
-    // FIXME : useless?
+    // used by jelly
     public static BuildTriggerBadgePlugin getPlugin() {
-        return ExtensionList.lookupSingleton(BuildTriggerBadgePlugin.class);
+        return Jenkins.get().getPlugin(BuildTriggerBadgePlugin.class);
     }
 
     // non use interface methods
