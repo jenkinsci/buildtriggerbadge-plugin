@@ -1,4 +1,4 @@
 <?jelly escape-by-default='true'?>
 <div>
-  This plugin displays an icon representing the cause of a construction.
+  This plugin displays an icon representing the cause of a build.
 </div>
