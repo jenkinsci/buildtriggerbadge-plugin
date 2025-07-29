@@ -1,18 +1,18 @@
 <?jelly escape-by-default='true'?>
-<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-	<td>
+<j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout">
+	<td class="${it.causeDisplayType.equals('iconAndDesc') ? '' : 'jenkins-table__icon'}">
 		<j:set var="entries" value="${it.getLastBuildCauses(job)}" />
 		<j:choose>
 			<j:when test="${entries != null}">
 				<j:forEach var="causeEntry" varStatus="status" items="${entries}">
 					<j:set var="causeIconUrl" value="${causeEntry.key}" />
 					<j:set var="causeShortDesc" value="${causeEntry.value}" />
-					<img width="16" height="16" src="${rootURL}${causeIconUrl}" title="${causeShortDesc}" />
+					<l:icon src="${causeIconUrl}" tooltip="${causeShortDesc}" class="icon-sm"/>
 					<j:if test="${it.causeDisplayType.equals('iconAndDesc')}">
 						<span>&#160;${causeShortDesc}</span>
-					</j:if>
-					<j:if test="${!status.last}">
-						<br/>
+						<j:if test="${!status.last}">
+							<br/>
+						</j:if>
 					</j:if>
 				</j:forEach>
 			</j:when>
