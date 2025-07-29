@@ -23,9 +23,10 @@ import hudson.model.Cause;
 public abstract class BuildTriggerBadgeProvider implements ExtensionPoint {
 
     /**
-     * Should return the URL to the icon corresponding to the given cause.
+     * Should return the <a href="https://weekly.ci.jenkins.io/design-library/symbols/">Jenkins Symbol</a>
+     * or URL to the icon corresponding to the given cause.
      *
-     * @return the URL to the icon for that cause, null if none provided.
+     * @return the symbol or URL of the icon for that cause, null if none provided.
      */
     @CheckForNull
     public abstract String provideIcon(@NonNull Cause cause);
