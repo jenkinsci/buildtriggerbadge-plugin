@@ -90,6 +90,9 @@ public class IconFinder {
                 "io.jenkins.plugins.gitlabbranchsource.GitLabMergeRequestCommentCause",
                 "symbol-chatbox-outline plugin-ionicons-api");
         defineIconForCause(
+                "com.adobe.jenkins.github_pr_comment_build.GitHubPullRequestCommentCause",
+                "symbol-chatbox-outline plugin-ionicons-api");
+        defineIconForCause(
                 "org.jenkinsci.plugins.periodicreincarnation.PeriodicReincarnationBuildCause",
                 "symbol-refresh-outline plugin-ionicons-api");
         defineIconForCause(
