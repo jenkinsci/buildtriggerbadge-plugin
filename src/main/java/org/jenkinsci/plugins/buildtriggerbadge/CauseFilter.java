@@ -1,12 +1,12 @@
 package org.jenkinsci.plugins.buildtriggerbadge;
 
-import edu.umd.cs.findbugs.annotations.CheckForNull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import hudson.model.Cause;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 /**
  * Filtering possible duplicate causes
@@ -22,26 +22,20 @@ public class CauseFilter {
      * Filter causes by Class type and description
      *
      * @param inputCauses list of causes
-     * @return filtered list or null
+     * @return filtered list, possibly empty, never null
      */
-    @CheckForNull
+    @NonNull
     public static List<Cause> filter(@Nullable List<Cause> inputCauses) {
         if (inputCauses == null) {
-            return null;
+            return List.of();
         }
 
-        List<Cause> outCauses = new ArrayList<>();
-        Set<String> causeClasses = new HashSet<>();
-        for (Cause cause : inputCauses) {
-            // filter causes by Class type and description
-            String filter = getCauseFilter(cause);
-            if (!causeClasses.contains(filter)) {
-                causeClasses.add(filter);
-                outCauses.add(cause);
-            }
-        }
+        return inputCauses.stream().filter(distinctCause()).toList();
+    }
 
-        return outCauses;
+    private static Predicate<Cause> distinctCause() {
+        Set<String> seen = new HashSet<>();
+        return c -> seen.add(getCauseFilter(c));
     }
 
     private static String getCauseFilter(Cause cause) {

@@ -25,11 +25,9 @@ public class RunListenerImpl extends RunListener<Run<?, ?>> {
         PluginWrapper plugin = BuildTriggerBadgePlugin.get();
         if (plugin.isActive()) {
             List<Cause> causes = CauseFilter.filter(build.getCauses());
-            if (causes != null) {
-                for (Cause cause : causes) {
-                    if (isEnabled(cause)) {
-                        build.addAction(new BuildTriggerBadgeAction(cause));
-                    }
+            for (Cause cause : causes) {
+                if (isEnabled(cause)) {
+                    build.addAction(new BuildTriggerBadgeAction(cause));
                 }
             }
         }
