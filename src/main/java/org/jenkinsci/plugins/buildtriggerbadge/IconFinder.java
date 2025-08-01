@@ -84,6 +84,9 @@ public class IconFinder {
                 "com.cloudbees.jenkins.plugins.github_pull.GitHubPullRequestCause",
                 "symbol-github-pull-request plugin-ionicons-api");
         defineIconForCause(
+                "io.jenkins.plugins.checks.github.CheckRunGHEventSubscriber$GitHubChecksRerunActionCause",
+                "symbol-refresh-outline plugin-ionicons-api");
+        defineIconForCause(
                 "stashpullrequestbuilder.stashpullrequestbuilder.StashCause",
                 "symbol-github-pull-request plugin-ionicons-api");
         defineIconForCause(
