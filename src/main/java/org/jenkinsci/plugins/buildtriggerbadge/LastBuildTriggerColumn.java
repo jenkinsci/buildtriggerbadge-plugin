@@ -67,14 +67,13 @@ public class LastBuildTriggerColumn extends ListViewColumn {
         Run r = job.getLastBuild();
         if (r != null) {
             List<Cause> lastCauses = CauseFilter.filter((List<Cause>) r.getCauses());
-            if (lastCauses != null) {
-                Map<String, String> causeEntries = new HashMap<>();
-                for (Cause cause : lastCauses) {
-                    causeEntries.put(new BuildTriggerBadgeAction(cause).getIcon(), cause.getShortDescription());
-                }
-                return causeEntries;
+            Map<String, String> causeEntries = new HashMap<>();
+            for (Cause cause : lastCauses) {
+                causeEntries.put(new BuildTriggerBadgeAction(cause).getIcon(), cause.getShortDescription());
             }
+            return causeEntries;
         }
+
         return null;
     }
 }
