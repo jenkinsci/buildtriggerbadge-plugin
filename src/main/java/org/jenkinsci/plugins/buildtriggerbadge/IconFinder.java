@@ -19,10 +19,11 @@ import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeProvide
  * Class responsible for finding the icon associated with a build cause.
  *
  * @author Baptiste Mathus
+ * @see BuildTriggerBadgeProvider
  */
 public class IconFinder {
 
-    private static final Logger LOGGER = Logger.getLogger(IconFinder.class.getSimpleName());
+    private static final Logger LOGGER = Logger.getLogger(IconFinder.class.getName());
 
     private final Cause cause;
 
@@ -30,6 +31,10 @@ public class IconFinder {
         this.cause = cause;
     }
 
+    /**
+     * Find icon for the configured cause.
+     * @return icon url or symbol
+     */
     @NonNull
     public String find() {
 
@@ -38,19 +43,18 @@ public class IconFinder {
             String providedIcon = provider.provideIcon(cause);
             if (providedIcon != null) {
                 LOGGER.log(Level.FINEST, "Badge for cause '{0}' set/overriden by extension '{1}': '{2}'", new Object[] {
-                    cause, provider.getClass().getSimpleName()
+                    cause, provider.getClass().getSimpleName(), providedIcon
                 });
                 return providedIcon;
             }
         }
 
         // internal lookup if nothing found previously
-        Class<?> clazz = cause.getClass();
-        return internalFindForClass(clazz);
+        return internalFindForClass(cause.getClass());
     }
 
     @NonNull
-    private String internalFindForClass(Class<?> clazz) {
+    private static String internalFindForClass(Class<?> clazz) {
         if (clazz == null) {
             return "symbol-help-outline plugin-ionicons-api";
         }

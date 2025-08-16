@@ -2,15 +2,12 @@ package org.jenkinsci.plugins.buildtriggerbadge;
 
 import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
-import hudson.model.Cause;
 import hudson.model.Descriptor;
 import hudson.model.Job;
 import hudson.model.Run;
 import hudson.views.ListViewColumn;
 import hudson.views.ListViewColumnDescriptor;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
@@ -62,16 +59,11 @@ public class LastBuildTriggerColumn extends ListViewColumn {
         return DESCRIPTOR;
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public Map<String, String> getLastBuildCauses(Job job) {
-        Run r = job.getLastBuild();
+    @SuppressWarnings({"unused"}) // used by jelly
+    public List<BuildTriggerBadgeAction> getLastBuildCauses(Job<?, ?> job) {
+        Run<?, ?> r = job.getLastBuild();
         if (r != null) {
-            List<Cause> lastCauses = CauseFilter.filter((List<Cause>) r.getCauses());
-            Map<String, String> causeEntries = new HashMap<>();
-            for (Cause cause : lastCauses) {
-                causeEntries.put(new BuildTriggerBadgeAction(cause).getIcon(), cause.getShortDescription());
-            }
-            return causeEntries;
+            return BuildTriggerBadgeAction.createForRun(r);
         }
 
         return null;

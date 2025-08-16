@@ -5,8 +5,8 @@
 		<j:choose>
 			<j:when test="${entries != null}">
 				<j:forEach var="causeEntry" varStatus="status" items="${entries}">
-					<j:set var="causeIconUrl" value="${causeEntry.key}" />
-					<j:set var="causeShortDesc" value="${causeEntry.value}" />
+					<j:set var="causeIconUrl" value="${causeEntry.icon}" />
+					<j:set var="causeShortDesc" value="${causeEntry.tooltip}" />
 					<l:icon src="${causeIconUrl}" tooltip="${causeShortDesc}" class="icon-sm"/>
 					<j:if test="${it.causeDisplayType.equals('iconAndDesc')}">
 						<span>&#160;${causeShortDesc}</span>
