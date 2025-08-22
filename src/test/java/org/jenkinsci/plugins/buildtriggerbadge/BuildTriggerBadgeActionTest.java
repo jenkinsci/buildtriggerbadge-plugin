@@ -4,6 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.containsStringIgnoringCase;
 import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.mockito.Mockito.mock;
@@ -13,10 +14,12 @@ import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.model.BuildBadgeAction;
 import hudson.model.Cause;
 import hudson.model.Cause.UpstreamCause;
+import hudson.model.CauseAction;
 import hudson.model.FreeStyleBuild;
 import hudson.model.FreeStyleProject;
 import hudson.model.queue.QueueTaskFuture;
 import hudson.triggers.SCMTrigger.SCMTriggerCause;
+import hudson.triggers.TimerTrigger;
 import java.util.List;
 import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeDeactivator;
 import org.jenkinsci.plugins.buildtriggerbadge.provider.BuildTriggerBadgeProvider;
@@ -95,5 +98,16 @@ class BuildTriggerBadgeActionTest {
 
         List<BuildBadgeAction> badgeActions = build.getBadgeActions();
         assertThat(badgeActions, empty());
+    }
+
+    @Test
+    void createForRun() throws Exception {
+        FreeStyleProject project = j.createFreeStyleProject();
+        QueueTaskFuture<FreeStyleBuild> futureBuild = project.scheduleBuild2(
+                0, new SCMTriggerCause("Boum"), List.of(new CauseAction(new TimerTrigger.TimerTriggerCause())));
+        FreeStyleBuild build = futureBuild.get();
+        var badgeActions = BuildTriggerBadgeAction.createForRun(build);
+        assertThat(badgeActions, hasSize(1));
+        assertThat(badgeActions.get(0).getTooltip(), equalTo("Started by timer"));
     }
 }
