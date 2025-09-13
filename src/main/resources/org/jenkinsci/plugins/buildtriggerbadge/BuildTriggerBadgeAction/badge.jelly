@@ -1,7 +1,9 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout">
-	<j:if test="${it.plugin.activated}">
-		<l:icon tooltip="${it.tooltip}" alt="${it.displayName}"
-	     	 src="${it.icon}" class="icon-sm"/>
-	</j:if>
+    <j:if test="${it.plugin.activated}">
+        <span style="cursor: default">
+            <l:icon tooltip="${it.tooltip}" alt="${it.displayName}"
+                 src="${it.icon}" class="icon-sm"/>
+        </span>
+    </j:if>
 </j:jelly>
